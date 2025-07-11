@@ -20,4 +20,8 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FinancePlanner.Core\FinancePlanner.Core.csproj" />
+  </ItemGroup>
+
 </Project>
