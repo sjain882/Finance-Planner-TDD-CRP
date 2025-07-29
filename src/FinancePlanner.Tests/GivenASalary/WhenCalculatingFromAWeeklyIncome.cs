@@ -1,6 +1,7 @@
 ﻿using FinancePlanner.Core.Shared.Common.Models;
 using FinancePlanner.Core.Shared.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Core.WageCalculator.Handlers;
+using FinancePlanner.Core.WageCalculators;
 using Moq;
 
 namespace FinancePlanner.Tests.GivenYearlySalary;
@@ -8,6 +9,7 @@ namespace FinancePlanner.Tests.GivenYearlySalary;
 // Injects into setup instead of method for class wide test
 [TestFixture(500, 2025, 07, 29, 26000)]
 [TestFixture(500, 2024, 07, 29, 26000)]
+[TestFixture(384.62, 2024, 07, 29, 20000.24)]
 public class WhenCalculatingFromAWeeklyIncome
 {
     private HandlerResult _actualSalary;

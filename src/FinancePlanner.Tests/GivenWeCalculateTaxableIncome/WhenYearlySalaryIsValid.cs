@@ -1,5 +1,6 @@
 ﻿using FinancePlanner.Core.Shared.Common.Models;
 using FinancePlanner.Core.WageCalculator.Handlers;
+using FinancePlanner.Core.WageCalculators;
 
 namespace FinancePlanner.Tests.GivenWeCalculateTaxableIncome;
 

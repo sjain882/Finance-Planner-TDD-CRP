@@ -2,7 +2,7 @@
 
 namespace FinancePlanner.Core.Shared.Common.Models;
 
-public class HandlerRequest
+public class CalculateWageRequest
 {
     public decimal Salary {  get; set; }
     

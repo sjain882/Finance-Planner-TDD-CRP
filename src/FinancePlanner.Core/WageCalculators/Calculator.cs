@@ -14,19 +14,19 @@ public class Calculator
     {
         _dateTimeProvider = dateTimeProvider;
     }
-    public void Calculate(HandlerRequest handlerRequest)
+    public void Calculate(CalculateWageRequest calculateWageRequest)
     {
         // AbstractHandler handler = new FromYearlySalary();
-        IHandler handler = handlerRequest.SalaryFrequency switch
+        IHandler handler = calculateWageRequest.SalaryFrequency switch
         {
             SalaryFrequency.Yearly => new FromYearlySalaryHandler(),
             SalaryFrequency.Monthly => new FromMonthlySalaryHandler(),
             SalaryFrequency.Weekly => new FromWeeklySalaryHandler(_dateTimeProvider),
             _ => throw new NotImplementedException(),
         };
-        handler = new GetTaxableIncomeHandler(handler, handlerRequest.TaxFreeAmount);
+        handler = new GetTaxableIncomeHandler(handler, calculateWageRequest.TaxFreeAmount);
 
-        var x = handler.Handle(handlerRequest.Salary);
+        var x = handler.Handle(calculateWageRequest.Salary);
         
         Console.WriteLine(x.YearlySalary);
         Console.WriteLine(x.TaxableAmount);

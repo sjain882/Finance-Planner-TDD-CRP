@@ -1,4 +1,4 @@
-﻿namespace FinancePlanner.Core.Shared.Common.Models;
+﻿namespace FinancePlanner.Core.WageCalculators;
 
 public class HandlerResult
 {

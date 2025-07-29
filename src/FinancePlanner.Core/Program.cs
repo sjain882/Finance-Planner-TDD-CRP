@@ -11,7 +11,7 @@ public class Program
     {
         var calculator = new Calculator(new DateTimeProvider());
         
-        calculator.Calculate(new HandlerRequest()
+        calculator.Calculate(new CalculateWageRequest()
         {
             Salary = 500m,
             SalaryFrequency = SalaryFrequency.Weekly,
