@@ -1,14 +1,22 @@
 ﻿using System.Globalization;
 using FinancePlanner.Core.Shared.Common.Interfaces;
 using FinancePlanner.Core.Shared.Common.Models;
+using FinancePlanner.Core.Shared.Common.Utilities.DateTimeUtil;
 
 namespace FinancePlanner.Core.WageCalculator.Handlers;
 
 public class FromWeeklySalaryHandler : IHandler
 {
+    private readonly IDateTimeProvider _dateTimeProvider;
+
+    public FromWeeklySalaryHandler(IDateTimeProvider dateTimeProvider)
+    {
+        _dateTimeProvider = dateTimeProvider;
+    }
+    
     public HandlerResult Handle(decimal salary)
     {
-        var weeksInCurrentYear = ISOWeek.GetWeeksInYear(System.DateTime.Now.Year);
+        var weeksInCurrentYear = ISOWeek.GetWeeksInYear(_dateTimeProvider.Now.Year);
 
         return new HandlerResult
         {

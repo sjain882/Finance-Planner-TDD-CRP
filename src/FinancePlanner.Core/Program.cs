@@ -1,4 +1,5 @@
 ﻿using FinancePlanner.Core.Shared.Common.Models;
+using FinancePlanner.Core.Shared.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Core.Shared.Common.Values;
 using FinancePlanner.Core.WageCalculators;
 
@@ -8,11 +9,13 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        Calculator.Calculate(new HandlerRequest()
+        var calculator = new Calculator(new DateTimeProvider());
+        
+        calculator.Calculate(new HandlerRequest()
         {
-            Salary = 20000.00m,
-            SalaryFrequency = SalaryFrequency.Monthly,
-            TaxFreeAmount = 2000.00m,
+            Salary = 500m,
+            SalaryFrequency = SalaryFrequency.Weekly,
+            TaxFreeAmount = 200m,
         });
     }
 }
