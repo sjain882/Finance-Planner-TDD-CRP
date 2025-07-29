@@ -22,6 +22,7 @@ public class Calculator
             SalaryFrequency.Yearly => new FromYearlySalaryHandler(),
             SalaryFrequency.Monthly => new FromMonthlySalaryHandler(),
             SalaryFrequency.Weekly => new FromWeeklySalaryHandler(_dateTimeProvider),
+            SalaryFrequency.Daily => new FromDailySalaryHandler(_dateTimeProvider),
             _ => throw new NotImplementedException(),
         };
         handler = new GetTaxableIncomeHandler(handler, calculateWageRequest.TaxFreeAmount);
