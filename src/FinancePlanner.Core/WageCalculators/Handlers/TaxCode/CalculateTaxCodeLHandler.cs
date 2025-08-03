@@ -18,46 +18,44 @@ public class CalculateTaxCodeLHandler : IHandler
     {
         var result =  _handler.Handle(salary);
 
-        decimal taxableAmount = 0;
-        
-        // Personal allowance only under 123700
-        if (result.YearlySalary < 123700)
+        // PA goes down by £1 for every £2 if salary > £100,000
+        decimal personalAllowance = _personalAllowance;
+        if (salary > 100000)
         {
-            taxableAmount = result.YearlySalary - _personalAllowance;
+            decimal reduction = (salary - 100000) / 2;
+            personalAllowance = Math.Max(0, _personalAllowance - reduction);
         }
 
-        // If income level is below all tax thresholds
-        if (taxableAmount <= 0)
-        {
+        // Calculate taxable income
+        decimal taxableIncome = Math.Max(0, salary - personalAllowance);
+
+        if (taxableIncome <= 0)
             return result;
-        }
-        
-        decimal remaining = taxableAmount;
+
+        decimal taxPaid = 0;
 
         // Basic rate – 20% on income from £12,571 to £50,270
-        decimal basicRateLimit = 50270 - _personalAllowance;
-        if (remaining > 0)
+        if (salary > 12570)
         {
-            decimal basicRateTaxable = Math.Min(remaining, basicRateLimit);
-            result.TaxedAmount += basicRateTaxable * 0.20m;
-            remaining -= basicRateTaxable;
+            decimal basicTaxable = Math.Min(50270, salary) - 12570;
+            taxPaid += basicTaxable * 0.20m;
         }
 
         // Higher rate – 40% on income from £50,271 to £125,140
-        decimal higherRateLimit = 125140 - 50270;
-        if (remaining > 0)
+        if (salary > 50270)
         {
-            decimal higherRateTaxable = Math.Min(remaining, higherRateLimit);
-            result.TaxedAmount += higherRateTaxable * 0.40m;
-            remaining -= higherRateTaxable;
+            decimal higherTaxable = Math.Min(125140, salary) - 50270;
+            taxPaid += higherTaxable * 0.40m;
         }
 
         // Additional rate – 45% on income above £125,140
-        if (remaining > 0)
+        if (salary > 125140)
         {
-            result.TaxedAmount += remaining * 0.45m;
+            decimal additionalTaxable = salary - 125140;
+            taxPaid += additionalTaxable * 0.45m;
         }
 
+        result.TaxedAmount = taxPaid;
         return result;
     }
 }
