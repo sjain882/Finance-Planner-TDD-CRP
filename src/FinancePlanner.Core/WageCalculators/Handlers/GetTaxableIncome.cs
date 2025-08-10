@@ -4,20 +4,20 @@ using FinancePlanner.Core.WageCalculators;
 
 namespace FinancePlanner.Core.WageCalculator.Handlers;
 
-public class GetTaxableIncomeHandler : IHandler
+public class GetTaxableIncome : IWageCalculator
 {
-    private readonly IHandler _next;
+    private readonly IWageCalculator _next;
     private readonly decimal _yearlyTaxFreeAmount;
 
-    public GetTaxableIncomeHandler(IHandler next, decimal yearlyTaxFreeAmount)
+    public GetTaxableIncome(IWageCalculator next, decimal yearlyTaxFreeAmount)
     {
         _next = next;
         _yearlyTaxFreeAmount = yearlyTaxFreeAmount;
     }
     
-    public HandlerResult Handle(decimal salary)
+    public WageResult CalculateYearlyWage(decimal salary)
     {
-        var handlerResult = _next.Handle(salary);
+        var handlerResult = _next.CalculateYearlyWage(salary);
         handlerResult.TaxableAmount = handlerResult.YearlySalary - _yearlyTaxFreeAmount;
         
         return handlerResult;

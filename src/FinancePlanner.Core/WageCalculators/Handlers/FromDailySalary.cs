@@ -6,20 +6,20 @@ using FinancePlanner.Core.WageCalculators;
 
 namespace FinancePlanner.Core.WageCalculator.Handlers;
 
-public class FromDailySalaryHandler : IHandler
+public class FromDailySalary : IWageCalculator
 {
     private readonly IDateTimeProvider _dateTimeProvider;
 
-    public FromDailySalaryHandler(IDateTimeProvider dateTimeProvider)
+    public FromDailySalary(IDateTimeProvider dateTimeProvider)
     {
         _dateTimeProvider = dateTimeProvider;
     }
     
-    public HandlerResult Handle(decimal salary)
+    public WageResult CalculateYearlyWage(decimal salary)
     {
         var daysInCurrentYear = DateTime.IsLeapYear(_dateTimeProvider.Now.Year) ? 366 : 365;
 
-        return new HandlerResult
+        return new WageResult
         {
             YearlySalary = salary * daysInCurrentYear,
         };

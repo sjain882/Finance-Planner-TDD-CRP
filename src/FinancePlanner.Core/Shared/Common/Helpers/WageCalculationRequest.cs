@@ -2,9 +2,9 @@
 
 namespace FinancePlanner.Core.Shared.Common.Models;
 
-public class CalculateWageRequest
+public class WageCalculationRequest
 {
-    public decimal Salary {  get; set; }
+    public decimal Salary { get; set; }
     
     public SalaryFrequency SalaryFrequency { get; set; }
     

@@ -7,23 +7,23 @@ namespace FinancePlanner.Tests.GivenATaxCodeCalculation.WhenTaxCodeIsL;
 
 public class WhenSalaryIsWithinPersonalAllowanceBand
 {
-    private HandlerResult _result;
+    private WageResult _result;
 
     [SetUp]
     public void Setup()
     {
-        var grossYearlyWageMock = new Mock<IHandler>();
+        var grossYearlyWageMock = new Mock<IWageCalculator>();
         grossYearlyWageMock
-            .Setup(x => x.Handle(It.IsAny<decimal>()))
-            .Returns(new HandlerResult
+            .Setup(x => x.CalculateYearlyWage(It.IsAny<decimal>()))
+            .Returns(new WageResult
             {
                 YearlySalary = 10000m,
             });
         
         // Tax code of 1257L = 12570 of personal allowance
-        var x = new CalculateTaxCodeLHandler(grossYearlyWageMock.Object, 12570m);
+        var x = new CalculateTaxCodeL(grossYearlyWageMock.Object, 12570m);
 
-        _result = x.Handle(10000);
+        _result = x.CalculateYearlyWage(10000);
     }
 
     [Test]

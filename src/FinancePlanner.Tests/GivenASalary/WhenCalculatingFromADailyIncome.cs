@@ -11,7 +11,7 @@ namespace FinancePlanner.Tests.GivenYearlySalary;
 [TestFixture(70, 2028, 07, 29, 25620)]
 public class WhenCalculatingFromADailyIncome
 {
-    private HandlerResult _actualSalary;
+    private WageResult _actualSalary;
     private readonly decimal _salary;
     private readonly decimal _expectedSalary;
     private readonly DateTime _date;
@@ -30,8 +30,8 @@ public class WhenCalculatingFromADailyIncome
         dateTimeMock
             .Setup(x => x.Now)
             .Returns(_date);
-        var sut = new FromDailySalaryHandler(dateTimeMock.Object);
-        _actualSalary = sut.Handle(_salary);
+        var sut = new FromDailySalary(dateTimeMock.Object);
+        _actualSalary = sut.CalculateYearlyWage(_salary);
     }
     
     [Test]

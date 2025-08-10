@@ -4,11 +4,11 @@ using FinancePlanner.Core.WageCalculators;
 
 namespace FinancePlanner.Tests.GivenWeCalculateTaxableIncome;
 
-public class TaxableIncomeHandlerTestHelper : IHandler
+public class TaxableIncomeWageCalculatorTestHelper : IWageCalculator
 {
-    public HandlerResult Handle(decimal salary)
+    public WageResult CalculateYearlyWage(decimal salary)
     {
-        return new HandlerResult()
+        return new WageResult()
         {
             YearlySalary = salary,
         };

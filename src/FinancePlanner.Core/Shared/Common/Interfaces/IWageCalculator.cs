@@ -3,7 +3,8 @@ using FinancePlanner.Core.WageCalculators;
 
 namespace FinancePlanner.Core.Shared.Common.Interfaces;
 
-public interface IHandler
+// Handler interface in CRP
+public interface IWageCalculator
 {
-    HandlerResult Handle(decimal salary);
+    WageResult CalculateYearlyWage(decimal salary);
 }

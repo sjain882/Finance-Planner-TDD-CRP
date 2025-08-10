@@ -12,7 +12,7 @@ namespace FinancePlanner.Tests.GivenYearlySalary;
 [TestFixture(384.62, 2024, 07, 29, 20000.24)]
 public class WhenCalculatingFromAWeeklyIncome
 {
-    private HandlerResult _actualSalary;
+    private WageResult _actualSalary;
     private readonly decimal _salary;
     private readonly decimal _expectedSalary;
     private readonly DateTime _date;
@@ -31,8 +31,8 @@ public class WhenCalculatingFromAWeeklyIncome
         dateTimeMock
             .Setup(x => x.Now)
             .Returns(_date);
-        var sut = new FromWeeklySalaryHandler(dateTimeMock.Object);
-        _actualSalary = sut.Handle(_salary);
+        var sut = new FromWeeklySalary(dateTimeMock.Object);
+        _actualSalary = sut.CalculateYearlyWage(_salary);
     }
     
     [Test]

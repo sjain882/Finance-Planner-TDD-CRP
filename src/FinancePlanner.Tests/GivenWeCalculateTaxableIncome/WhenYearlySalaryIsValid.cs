@@ -9,7 +9,7 @@ namespace FinancePlanner.Tests.GivenWeCalculateTaxableIncome;
 public class WhenYearlySalaryIsValid
 {
     private readonly decimal _yearlyTaxFreeAmount;
-    private HandlerResult _result;
+    private WageResult _result;
     private readonly decimal _inputYearlySalary;
     private readonly decimal _expectedTaxableAmount;
 
@@ -23,8 +23,8 @@ public class WhenYearlySalaryIsValid
     [SetUp]
     public void Setup()
     {
-        var sut = new GetTaxableIncomeHandler(new TaxableIncomeHandlerTestHelper(), _yearlyTaxFreeAmount);
-        _result = sut.Handle(_inputYearlySalary);
+        var sut = new GetTaxableIncome(new TaxableIncomeWageCalculatorTestHelper(), _yearlyTaxFreeAmount);
+        _result = sut.CalculateYearlyWage(_inputYearlySalary);
     }
     
     [Test]

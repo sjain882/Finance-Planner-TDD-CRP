@@ -6,20 +6,20 @@ using FinancePlanner.Core.WageCalculators;
 
 namespace FinancePlanner.Core.WageCalculator.Handlers;
 
-public class FromWeeklySalaryHandler : IHandler
+public class FromWeeklySalary : IWageCalculator
 {
     private readonly IDateTimeProvider _dateTimeProvider;
 
-    public FromWeeklySalaryHandler(IDateTimeProvider dateTimeProvider)
+    public FromWeeklySalary(IDateTimeProvider dateTimeProvider)
     {
         _dateTimeProvider = dateTimeProvider;
     }
     
-    public HandlerResult Handle(decimal salary)
+    public WageResult CalculateYearlyWage(decimal salary)
     {
         var weeksInCurrentYear = ISOWeek.GetWeeksInYear(_dateTimeProvider.Now.Year);
 
-        return new HandlerResult
+        return new WageResult
         {
             YearlySalary = salary * weeksInCurrentYear,
         };

@@ -3,20 +3,20 @@ using FinancePlanner.Core.WageCalculators;
 
 namespace FinancePlanner.Core.WageCalculators.Handlers.TaxCode;
 
-public class CalculateTaxCodeLHandler : IHandler
+public class CalculateTaxCodeL : IWageCalculator
 {
-    private readonly IHandler _handler;
+    private readonly IWageCalculator _wageCalculator;
     private readonly decimal _personalAllowance;
 
-    public CalculateTaxCodeLHandler(IHandler handler, decimal personalAllowance)
+    public CalculateTaxCodeL(IWageCalculator wageCalculator, decimal personalAllowance)
     {
-        _handler = handler;
+        _wageCalculator = wageCalculator;
         _personalAllowance = personalAllowance;
     }
 
-    public HandlerResult Handle(decimal salary)
+    public WageResult CalculateYearlyWage(decimal salary)
     {
-        var result =  _handler.Handle(salary);
+        var result =  _wageCalculator.CalculateYearlyWage(salary);
 
         // PA goes down by £1 for every £2 if salary > £100,000
         decimal personalAllowance = _personalAllowance;

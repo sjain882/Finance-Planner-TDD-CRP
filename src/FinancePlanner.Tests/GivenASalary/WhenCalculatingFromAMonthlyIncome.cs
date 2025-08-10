@@ -10,7 +10,7 @@ namespace FinancePlanner.Tests.GivenYearlySalary;
 [TestFixture(1500, 18000)]
 public class WhenCalculatingFromAMonthlyIncome
 {
-    private HandlerResult _actualSalary;
+    private WageResult _actualSalary;
     private readonly decimal _salary;
     private readonly decimal _expectedSalary;
 
@@ -23,8 +23,8 @@ public class WhenCalculatingFromAMonthlyIncome
     [SetUp]
     public void Setup()
     {
-        var sut = new FromMonthlySalaryHandler();
-        _actualSalary = sut.Handle(_salary);
+        var sut = new FromMonthlySalary();
+        _actualSalary = sut.CalculateYearlyWage(_salary);
     }
     
     [Test]

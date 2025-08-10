@@ -4,11 +4,11 @@ using FinancePlanner.Core.WageCalculators;
 
 namespace FinancePlanner.Core.WageCalculator.Handlers;
 
-public class FromYearlySalaryHandler : IHandler
+public class FromYearlySalary : IWageCalculator
 {
-    public HandlerResult Handle(decimal salary)
+    public WageResult CalculateYearlyWage(decimal salary)
     {
-        return new HandlerResult
+        return new WageResult
         {
             YearlySalary = salary
         };
