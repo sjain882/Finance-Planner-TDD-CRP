@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using FinancePlanner.Core.Shared.Common.Interfaces;
-using FinancePlanner.Core.Shared.Common.Models;
 using FinancePlanner.Core.Shared.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Core.WageCalculators;
 
@@ -14,14 +13,14 @@ public class FromWeeklySalary : IWageCalculator
     {
         _dateTimeProvider = dateTimeProvider;
     }
-    
+
     public WageResult CalculateYearlyWage(decimal salary)
     {
         var weeksInCurrentYear = ISOWeek.GetWeeksInYear(_dateTimeProvider.Now.Year);
 
         return new WageResult
         {
-            YearlySalary = salary * weeksInCurrentYear,
+            YearlySalary = salary * weeksInCurrentYear
         };
     }
 }

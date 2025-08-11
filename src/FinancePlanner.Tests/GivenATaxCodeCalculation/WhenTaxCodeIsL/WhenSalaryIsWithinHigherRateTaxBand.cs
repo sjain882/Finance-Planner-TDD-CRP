@@ -17,9 +17,9 @@ public class WhenSalaryIsWithinHigherRateAllowanceBand
             .Setup(x => x.CalculateYearlyWage(It.IsAny<decimal>()))
             .Returns(new WageResult
             {
-                YearlySalary = 60000m,
+                YearlySalary = 60000m
             });
-        
+
         // Tax code of 1257L = 12570 of personal allowance
         var x = new CalculateTaxCodeL(grossYearlyWageMock.Object, 12570m);
 

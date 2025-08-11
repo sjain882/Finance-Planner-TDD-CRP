@@ -1,5 +1,4 @@
 ﻿using FinancePlanner.Core.Shared.Common.Interfaces;
-using FinancePlanner.Core.Shared.Common.Models;
 using FinancePlanner.Core.WageCalculators;
 
 namespace FinancePlanner.Core.WageCalculator.Handlers;
@@ -14,12 +13,12 @@ public class GetTaxableIncome : IWageCalculator
         _next = next;
         _yearlyTaxFreeAmount = yearlyTaxFreeAmount;
     }
-    
+
     public WageResult CalculateYearlyWage(decimal salary)
     {
         var handlerResult = _next.CalculateYearlyWage(salary);
         handlerResult.TaxableAmount = handlerResult.YearlySalary - _yearlyTaxFreeAmount;
-        
+
         return handlerResult;
     }
 }

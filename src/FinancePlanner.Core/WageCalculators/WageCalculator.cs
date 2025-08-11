@@ -14,6 +14,7 @@ public class WageCalculator
     {
         _dateTimeProvider = dateTimeProvider;
     }
+
     public void Calculate(WageCalculationRequest wageCalculationRequest)
     {
         // AbstractHandler handler = new FromYearlySalary();
@@ -23,12 +24,12 @@ public class WageCalculator
             SalaryFrequency.Monthly => new FromMonthlySalary(),
             SalaryFrequency.Weekly => new FromWeeklySalary(_dateTimeProvider),
             SalaryFrequency.Daily => new FromDailySalary(_dateTimeProvider),
-            _ => throw new NotImplementedException(),
+            _ => throw new NotImplementedException()
         };
         wageCalculator = new GetTaxableIncome(wageCalculator, wageCalculationRequest.TaxFreeAmount);
 
         var x = wageCalculator.CalculateYearlyWage(wageCalculationRequest.Salary);
-        
+
         Console.WriteLine(x.YearlySalary);
         Console.WriteLine(x.TaxableAmount);
     }

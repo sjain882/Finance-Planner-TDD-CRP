@@ -1,5 +1,4 @@
 ﻿using FinancePlanner.Core.Shared.Common.Interfaces;
-using FinancePlanner.Core.Shared.Common.Models;
 using FinancePlanner.Core.WageCalculators;
 
 namespace FinancePlanner.Core.WageCalculator.Handlers;
@@ -10,7 +9,7 @@ public class FromMonthlySalary : IWageCalculator
     {
         return new WageResult
         {
-            YearlySalary = salary * 12,
+            YearlySalary = salary * 12
         };
     }
 }

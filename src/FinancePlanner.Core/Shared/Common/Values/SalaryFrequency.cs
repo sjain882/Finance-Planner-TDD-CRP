@@ -6,5 +6,5 @@ public enum SalaryFrequency
     Daily = 1,
     Weekly = 2,
     Monthly = 3,
-    Yearly = 4,
+    Yearly = 4
 }

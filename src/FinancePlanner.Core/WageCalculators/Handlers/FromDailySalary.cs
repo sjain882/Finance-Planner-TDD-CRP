@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-using FinancePlanner.Core.Shared.Common.Interfaces;
-using FinancePlanner.Core.Shared.Common.Models;
+﻿using FinancePlanner.Core.Shared.Common.Interfaces;
 using FinancePlanner.Core.Shared.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Core.WageCalculators;
 
@@ -14,14 +12,14 @@ public class FromDailySalary : IWageCalculator
     {
         _dateTimeProvider = dateTimeProvider;
     }
-    
+
     public WageResult CalculateYearlyWage(decimal salary)
     {
         var daysInCurrentYear = DateTime.IsLeapYear(_dateTimeProvider.Now.Year) ? 366 : 365;
 
         return new WageResult
         {
-            YearlySalary = salary * daysInCurrentYear,
+            YearlySalary = salary * daysInCurrentYear
         };
     }
 }

@@ -1,5 +1,4 @@
-﻿using FinancePlanner.Core.Shared.Common.Models;
-using FinancePlanner.Core.Shared.Common.Utilities.DateTimeUtil;
+﻿using FinancePlanner.Core.Shared.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Core.WageCalculator.Handlers;
 using FinancePlanner.Core.WageCalculators;
 using Moq;
@@ -11,6 +10,17 @@ namespace FinancePlanner.Tests.GivenYearlySalary;
 [TestFixture(70, 2028, 07, 29, 25620)]
 public class WhenCalculatingFromADailyIncome
 {
+    [SetUp]
+    public void Setup()
+    {
+        var dateTimeMock = new Mock<IDateTimeProvider>();
+        dateTimeMock
+            .Setup(x => x.Now)
+            .Returns(_date);
+        var sut = new FromDailySalary(dateTimeMock.Object);
+        _actualSalary = sut.CalculateYearlyWage(_salary);
+    }
+
     private WageResult _actualSalary;
     private readonly decimal _salary;
     private readonly decimal _expectedSalary;
@@ -23,17 +33,6 @@ public class WhenCalculatingFromADailyIncome
         _expectedSalary = (decimal)expectedSalary;
     }
 
-    [SetUp]
-    public void Setup()
-    {
-        var dateTimeMock = new Mock<IDateTimeProvider>();
-        dateTimeMock
-            .Setup(x => x.Now)
-            .Returns(_date);
-        var sut = new FromDailySalary(dateTimeMock.Object);
-        _actualSalary = sut.CalculateYearlyWage(_salary);
-    }
-    
     [Test]
     public void ThenTheCorrectYearlyIncomeIsCalculated()
     {

@@ -1,5 +1,4 @@
-﻿using FinancePlanner.Core.Shared.Common.Models;
-using FinancePlanner.Core.WageCalculators;
+﻿using FinancePlanner.Core.WageCalculators;
 
 namespace FinancePlanner.Core.Shared.Common.Interfaces;
 

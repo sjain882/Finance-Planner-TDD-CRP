@@ -1,6 +1,4 @@
-﻿using System.IO.Enumeration;
-using FinancePlanner.Core.Shared.Common.Models;
-using FinancePlanner.Core.WageCalculator.Handlers;
+﻿using FinancePlanner.Core.WageCalculator.Handlers;
 using FinancePlanner.Core.WageCalculators;
 
 namespace FinancePlanner.Tests.GivenYearlySalary;
@@ -10,6 +8,13 @@ namespace FinancePlanner.Tests.GivenYearlySalary;
 [TestFixture(20000, 20000)]
 public class WhenCalculatingFromAYearlyIncome
 {
+    [SetUp]
+    public void Setup()
+    {
+        var sut = new FromYearlySalary();
+        _actualSalary = sut.CalculateYearlyWage(_inputSalary);
+    }
+
     private WageResult _actualSalary;
     private readonly decimal _inputSalary;
     private readonly decimal _expectedSalary;
@@ -20,18 +25,9 @@ public class WhenCalculatingFromAYearlyIncome
         _expectedSalary = (decimal)expectedSalary;
     }
 
-    [SetUp]
-    public void Setup()
-    {
-        var sut = new FromYearlySalary();
-        _actualSalary = sut.CalculateYearlyWage(_inputSalary);
-    }
-    
     [Test]
     public void ThenTheCorrectYearlyIncomeIsCalculated()
     {
         Assert.That(_actualSalary.YearlySalary, Is.EqualTo(_expectedSalary));
     }
 }
-
-
