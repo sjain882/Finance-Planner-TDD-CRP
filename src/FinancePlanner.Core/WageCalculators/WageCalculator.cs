@@ -15,10 +15,10 @@ public class WageCalculator
         _dateTimeProvider = dateTimeProvider;
     }
 
-    public void Calculate(WageCalculationRequest wageCalculationRequest)
+    public void Calculate(WageCalculationRequest calculationRequest)
     {
         // AbstractHandler handler = new FromYearlySalary();
-        IWageCalculator wageCalculator = wageCalculationRequest.SalaryFrequency switch
+        IWageCalculator wageCalculator = calculationRequest.SalaryFrequency switch
         {
             SalaryFrequency.Yearly => new FromYearlySalary(),
             SalaryFrequency.Monthly => new FromMonthlySalary(),
@@ -26,11 +26,11 @@ public class WageCalculator
             SalaryFrequency.Daily => new FromDailySalary(_dateTimeProvider),
             _ => throw new NotImplementedException()
         };
-        wageCalculator = new GetTaxableIncome(wageCalculator, wageCalculationRequest.TaxFreeAmount);
+        wageCalculator = new GetTaxableIncome(wageCalculator, calculationRequest.TaxFreeAmount);
 
-        var x = wageCalculator.CalculateYearlyWage(wageCalculationRequest.Salary);
+        var wageResult = wageCalculator.CalculateYearlyWage(calculationRequest.Salary);
 
-        Console.WriteLine(x.YearlySalary);
-        Console.WriteLine(x.TaxableAmount);
+        Console.WriteLine(wageResult.YearlySalary);
+        Console.WriteLine(wageResult.TaxableAmount);
     }
 }
