@@ -1,14 +1,15 @@
 ﻿using FinancePlanner.Common.Models;
 using FinancePlanner.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Common.Values;
+using FinancePlanner.Queries.Wage.Application;
 
-namespace FinancePlanner.Core;
+namespace FinancePlanner.Main;
 
 public class Program
 {
     public static void Main(string[] args)
     {
-        var calculator = new WageCalculators.WageCalculator(new DateTimeProvider());
+        var calculator = new WageCalculator(new DateTimeProvider());
 
         calculator.Calculate(new WageCalculationRequest
         {
