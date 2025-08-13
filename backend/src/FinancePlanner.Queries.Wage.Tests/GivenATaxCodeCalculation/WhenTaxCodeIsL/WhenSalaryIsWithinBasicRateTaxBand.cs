@@ -2,7 +2,7 @@
 using FinancePlanner.Queries.Wage.Application.TaxCode;
 using Moq;
 
-namespace FinancePlanner.Queries.Tests.GivenATaxCodeCalculation.WhenTaxCodeIsL;
+namespace FinancePlanner.Queries.Wage.Tests.GivenATaxCodeCalculation.WhenTaxCodeIsL;
 
 public class WhenSalaryIsWithinBasicRateAllowanceBand
 {

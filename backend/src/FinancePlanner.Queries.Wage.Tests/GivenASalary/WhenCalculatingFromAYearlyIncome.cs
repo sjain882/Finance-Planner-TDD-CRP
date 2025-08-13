@@ -1,6 +1,6 @@
 ﻿using FinancePlanner.Queries.Wage.Application;
 
-namespace FinancePlanner.Queries.Tests.GivenASalary;
+namespace FinancePlanner.Queries.Wage.Tests.GivenASalary;
 
 // Injects into setup instead of method for class wide test
 [TestFixture(1, 1)]

@@ -1,6 +1,6 @@
 ﻿using FinancePlanner.Queries.Wage.Application;
 
-namespace FinancePlanner.Queries.Tests.GivenWeCalculateTaxableIncome;
+namespace FinancePlanner.Queries.Wage.Tests.GivenWeCalculateTaxableIncome;
 
 [TestFixture(0, 0, 0)]
 [TestFixture(20000, 2000, 18000)]

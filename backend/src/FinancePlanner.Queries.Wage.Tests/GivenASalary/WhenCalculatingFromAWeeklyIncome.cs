@@ -2,7 +2,7 @@
 using FinancePlanner.Queries.Wage.Application;
 using Moq;
 
-namespace FinancePlanner.Queries.Tests.GivenASalary;
+namespace FinancePlanner.Queries.Wage.Tests.GivenASalary;
 
 // Injects into setup instead of method for class wide test
 [TestFixture(500, 2025, 07, 29, 26000)]

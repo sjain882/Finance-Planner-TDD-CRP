@@ -1,6 +1,6 @@
 ﻿using FinancePlanner.Queries.Wage.Application;
 
-namespace FinancePlanner.Queries.Tests.GivenWeCalculateTaxableIncome;
+namespace FinancePlanner.Queries.Wage.Tests.GivenWeCalculateTaxableIncome;
 
 public class TaxableIncomeWageCalculatorTestHelper : IWageCalculator
 {

@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Queries\FinancePlanner.Queries.Wage\FinancePlanner.Queries.Wage.csproj"/>
+        <ProjectReference Include="..\Queries\Wage\FinancePlanner.Queries.Wage.Application\FinancePlanner.Queries.Wage.Application.csproj"/>
         <ProjectReference Include="..\Shared\FinancePlanner.Common\FinancePlanner.Common.csproj"/>
     </ItemGroup>
 
