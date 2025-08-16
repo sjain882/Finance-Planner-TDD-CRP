@@ -1,4 +1,5 @@
 ﻿using FinancePlanner.Queries.Wage.Application;
+using MoneyTracker.Common.Utilities.MoneyUtil;
 
 namespace FinancePlanner.Queries.Wage.Tests.GivenWeCalculateTaxableIncome;
 
@@ -13,16 +14,16 @@ public class WhenYearlySalaryIsValid
         _result = sut.CalculateYearlyWage(_inputYearlySalary);
     }
 
-    private readonly decimal _yearlyTaxFreeAmount;
+    private readonly Money _yearlyTaxFreeAmount;
     private WageResult _result;
-    private readonly decimal _inputYearlySalary;
-    private readonly decimal _expectedTaxableAmount;
+    private readonly Money _inputYearlySalary;
+    private readonly Money _expectedTaxableAmount;
 
     public WhenYearlySalaryIsValid(double inputYearlySalary, double yearlyTaxFreeAmount, double expectedTaxableAmount)
     {
-        _yearlyTaxFreeAmount = (decimal)yearlyTaxFreeAmount;
-        _inputYearlySalary = (decimal)inputYearlySalary;
-        _expectedTaxableAmount = (decimal)expectedTaxableAmount;
+        _yearlyTaxFreeAmount = Money.From((decimal)yearlyTaxFreeAmount);
+        _inputYearlySalary = Money.From((decimal)inputYearlySalary);
+        _expectedTaxableAmount = Money.From((decimal)expectedTaxableAmount);
     }
 
     [Test]

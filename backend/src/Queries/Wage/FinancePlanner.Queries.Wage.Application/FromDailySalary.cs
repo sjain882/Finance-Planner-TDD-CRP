@@ -1,4 +1,5 @@
 ﻿using FinancePlanner.Common.Utilities.DateTimeUtil;
+using MoneyTracker.Common.Utilities.MoneyUtil;
 
 namespace FinancePlanner.Queries.Wage.Application;
 
@@ -11,7 +12,7 @@ public class FromDailySalary : IWageCalculator
         _dateTimeProvider = dateTimeProvider;
     }
 
-    public WageResult CalculateYearlyWage(decimal salary)
+    public WageResult CalculateYearlyWage(Money salary)
     {
         var daysInCurrentYear = DateTime.IsLeapYear(_dateTimeProvider.Now.Year) ? 366 : 365;
 

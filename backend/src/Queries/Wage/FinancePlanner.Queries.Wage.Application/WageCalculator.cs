@@ -4,6 +4,7 @@ using FinancePlanner.Common.Utilities.Payment;
 using FinancePlanner.Common.Values;
 using FinancePlanner.Queries.Wage.Domain.Contracts.Response;
 using FinancePlanner.Queries.Wage.Domain.Handlers;
+using MoneyTracker.Common.Utilities.MoneyUtil;
 
 namespace FinancePlanner.Queries.Wage.Application;
 
@@ -37,7 +38,7 @@ public class WageCalculator : IWageService
         
         var repeatedPayments = new List<RepeatedPayment>()
         {
-            new RepeatedPayment(monthlyIncome, 12)
+            new RepeatedPayment(Money.From(monthlyIncome), 12)
         };
         
         return new WageResponse()

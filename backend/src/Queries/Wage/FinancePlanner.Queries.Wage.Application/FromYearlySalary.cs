@@ -1,8 +1,10 @@
-﻿namespace FinancePlanner.Queries.Wage.Application;
+﻿using MoneyTracker.Common.Utilities.MoneyUtil;
+
+namespace FinancePlanner.Queries.Wage.Application;
 
 public class FromYearlySalary : IWageCalculator
 {
-    public WageResult CalculateYearlyWage(decimal salary)
+    public WageResult CalculateYearlyWage(Money salary)
     {
         return new WageResult
         {

@@ -1,5 +1,6 @@
 ﻿using FinancePlanner.Queries.Wage.Application;
 using FinancePlanner.Queries.Wage.Application.TaxCode;
+using MoneyTracker.Common.Utilities.MoneyUtil;
 using Moq;
 
 namespace FinancePlanner.Queries.Wage.Tests.GivenATaxCodeCalculation.WhenTaxCodeIsL;
@@ -13,21 +14,21 @@ public class WhenSalaryIsWithinBasicRateAllowanceBand
     {
         var grossYearlyWageMock = new Mock<IWageCalculator>();
         grossYearlyWageMock
-            .Setup(x => x.CalculateYearlyWage(It.IsAny<decimal>()))
+            .Setup(x => x.CalculateYearlyWage(It.IsAny<Money>()))
             .Returns(new WageResult
             {
-                YearlySalary = 20000m
+                YearlySalary = Money.From(20000m)
             });
 
         // Tax code of 1257L = 12570 of personal allowance
-        var x = new CalculateTaxCodeL(grossYearlyWageMock.Object, 12570m);
+        var x = new CalculateTaxCodeL(grossYearlyWageMock.Object, Money.From(12570m));
 
-        _result = x.CalculateYearlyWage(20000);
+        _result = x.CalculateYearlyWage(Money.From(20000m));
     }
 
     [Test]
     public void ThenCorrectTaxedAmountIsCalculated()
     {
-        Assert.That(_result.TaxedAmount, Is.EqualTo(1486));
+        Assert.That(_result.TaxedAmount, Is.EqualTo(Money.From(1486m)));
     }
 }

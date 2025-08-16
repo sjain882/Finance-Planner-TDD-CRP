@@ -1,5 +1,6 @@
 ﻿using FinancePlanner.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Queries.Wage.Application;
+using MoneyTracker.Common.Utilities.MoneyUtil;
 using Moq;
 
 namespace FinancePlanner.Queries.Wage.Tests.GivenASalary;
@@ -22,15 +23,15 @@ public class WhenCalculatingFromAWeeklyIncome
     }
 
     private WageResult _actualSalary;
-    private readonly decimal _salary;
-    private readonly decimal _expectedSalary;
+    private readonly Money _salary;
+    private readonly Money _expectedSalary;
     private readonly DateTime _date;
 
     public WhenCalculatingFromAWeeklyIncome(double salary, int year, int month, int day, double expectedSalary)
     {
         _date = new DateTime(year, month, day);
-        _salary = (decimal)salary;
-        _expectedSalary = (decimal)expectedSalary;
+        _salary = Money.From((decimal)salary);
+        _expectedSalary = Money.From((decimal)expectedSalary);
     }
 
     [Test]

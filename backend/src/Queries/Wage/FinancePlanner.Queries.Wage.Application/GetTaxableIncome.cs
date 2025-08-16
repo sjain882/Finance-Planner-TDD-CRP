@@ -1,17 +1,19 @@
-﻿namespace FinancePlanner.Queries.Wage.Application;
+﻿using MoneyTracker.Common.Utilities.MoneyUtil;
+
+namespace FinancePlanner.Queries.Wage.Application;
 
 public class GetTaxableIncome : IWageCalculator
 {
     private readonly IWageCalculator _next;
-    private readonly decimal _yearlyTaxFreeAmount;
+    private readonly Money _yearlyTaxFreeAmount;
 
-    public GetTaxableIncome(IWageCalculator next, decimal yearlyTaxFreeAmount)
+    public GetTaxableIncome(IWageCalculator next, Money yearlyTaxFreeAmount)
     {
         _next = next;
         _yearlyTaxFreeAmount = yearlyTaxFreeAmount;
     }
 
-    public WageResult CalculateYearlyWage(decimal salary)
+    public WageResult CalculateYearlyWage(Money salary)
     {
         var handlerResult = _next.CalculateYearlyWage(salary);
         handlerResult.TaxableAmount = handlerResult.YearlySalary - _yearlyTaxFreeAmount;

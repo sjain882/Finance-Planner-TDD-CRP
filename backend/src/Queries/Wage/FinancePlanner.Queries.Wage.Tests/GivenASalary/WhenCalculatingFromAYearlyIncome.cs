@@ -1,4 +1,5 @@
 ﻿using FinancePlanner.Queries.Wage.Application;
+using MoneyTracker.Common.Utilities.MoneyUtil;
 
 namespace FinancePlanner.Queries.Wage.Tests.GivenASalary;
 
@@ -15,13 +16,13 @@ public class WhenCalculatingFromAYearlyIncome
     }
 
     private WageResult _actualSalary;
-    private readonly decimal _inputSalary;
-    private readonly decimal _expectedSalary;
+    private readonly Money _inputSalary;
+    private readonly Money _expectedSalary;
 
     public WhenCalculatingFromAYearlyIncome(double inputSalary, double expectedSalary)
     {
-        _inputSalary = (decimal)inputSalary;
-        _expectedSalary = (decimal)expectedSalary;
+        _inputSalary = Money.From((decimal)inputSalary);
+        _expectedSalary = Money.From((decimal)expectedSalary);
     }
 
     [Test]

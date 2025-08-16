@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using FinancePlanner.Common.Utilities.DateTimeUtil;
+using MoneyTracker.Common.Utilities.MoneyUtil;
 
 namespace FinancePlanner.Queries.Wage.Application;
 
@@ -12,7 +13,7 @@ public class FromWeeklySalary : IWageCalculator
         _dateTimeProvider = dateTimeProvider;
     }
 
-    public WageResult CalculateYearlyWage(decimal salary)
+    public WageResult CalculateYearlyWage(Money salary)
     {
         var weeksInCurrentYear = ISOWeek.GetWeeksInYear(_dateTimeProvider.Now.Year);
 

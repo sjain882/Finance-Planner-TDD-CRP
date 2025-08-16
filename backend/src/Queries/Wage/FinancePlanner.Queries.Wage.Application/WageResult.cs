@@ -1,8 +1,10 @@
-﻿namespace FinancePlanner.Queries.Wage.Application;
+﻿using MoneyTracker.Common.Utilities.MoneyUtil;
+
+namespace FinancePlanner.Queries.Wage.Application;
 
 public class WageResult
 {
-    public decimal YearlySalary { get; set; }
-    public decimal TaxableAmount { get; set; }
-    public decimal TaxedAmount { get; set; }
+    public Money YearlySalary { get; set; }
+    public Money TaxableAmount { get; set; }
+    public Money TaxedAmount { get; set; }
 }

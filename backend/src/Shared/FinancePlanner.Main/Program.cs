@@ -2,6 +2,7 @@
 using FinancePlanner.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Common.Values;
 using FinancePlanner.Queries.Wage.Application;
+using MoneyTracker.Common.Utilities.MoneyUtil;
 
 namespace FinancePlanner.Main;
 
@@ -13,9 +14,9 @@ public class Program
 
         calculator.CalculateWage(new WageCalculationRequest
         {
-            Salary = 500m,
+            Salary = Money.From(500m),
             SalaryFrequency = SalaryFrequency.Weekly,
-            TaxFreeAmount = 200m
+            TaxFreeAmount = Money.From(200m)
         });
     }
 }

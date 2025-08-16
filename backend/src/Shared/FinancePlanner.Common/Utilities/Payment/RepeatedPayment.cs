@@ -1,7 +1,9 @@
-﻿namespace FinancePlanner.Common.Utilities.Payment;
+﻿using MoneyTracker.Common.Utilities.MoneyUtil;
 
-public class RepeatedPayment(decimal value, int numberOfPayments)
+namespace FinancePlanner.Common.Utilities.Payment;
+
+public class RepeatedPayment(Money value, int numberOfPayments)
 {
-    public decimal Value { get; } = value;
+    public Money Value { get; } = value;
     public int NumberOfPayments { get; } = numberOfPayments;
 }
