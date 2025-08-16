@@ -1,4 +1,4 @@
-﻿namespace FinancePlanner.Common.Utilities.WageUtil;
+﻿namespace FinancePlanner.Common.Utilities.Payment;
 
 public class RepeatedPayment(decimal value, int numberOfPayments)
 {

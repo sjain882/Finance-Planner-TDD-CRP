@@ -1,0 +1,6 @@
+@FinancePlanner.Queries.Wage.API_HostAddress = http://localhost:5025
+
+GET {{FinancePlanner.Queries.Wage.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
