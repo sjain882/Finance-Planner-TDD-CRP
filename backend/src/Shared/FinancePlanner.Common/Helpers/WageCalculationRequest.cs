@@ -1,7 +1,7 @@
 ﻿using FinancePlanner.Common.Values;
 using MoneyTracker.Common.Utilities.MoneyUtil;
 
-namespace FinancePlanner.Common.Models;
+namespace FinancePlanner.Common.Helpers;
 
 public class WageCalculationRequest
 {
@@ -10,6 +10,6 @@ public class WageCalculationRequest
     public SalaryFrequency SalaryFrequency { get; set; }
 
     public Money TaxFreeAmount { get; set; }
-    
+
     public Money PersonalAllowance { get; set; }
 }

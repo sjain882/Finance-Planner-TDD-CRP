@@ -1,4 +1,4 @@
-﻿using FinancePlanner.Common.Models;
+﻿using FinancePlanner.Common.Helpers;
 using FinancePlanner.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Common.Values;
 using FinancePlanner.Queries.Wage.Application;

@@ -1,4 +1,4 @@
-﻿using FinancePlanner.Common.Models;
+﻿using FinancePlanner.Common.Helpers;
 using FinancePlanner.Queries.Wage.Domain.Contracts.Response;
 using FinancePlanner.Shared.Common.Result;
 

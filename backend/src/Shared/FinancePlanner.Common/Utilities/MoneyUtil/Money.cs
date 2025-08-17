@@ -1,25 +1,22 @@
 namespace MoneyTracker.Common.Utilities.MoneyUtil;
+
 public class Money
 {
-    public decimal Amount { get; }
     private Money(decimal amount)
     {
         Amount = amount;
     }
 
-    public static Money Zero { get; } = new Money(0);
+    public decimal Amount { get; }
+
+    public static Money Zero { get; } = new(0);
 
     public static Money From(decimal amount)
     {
         int numberOfDecimalPlaces = BitConverter.GetBytes(decimal.GetBits(amount)[3])[2];
         if (numberOfDecimalPlaces > 2)
-        {
             throw new InvalidDataException($"Money value has too many decimal places: {amount}");
-        }
-        if (amount < 0)
-        {
-            throw new InvalidDataException($"Money value cannot be negative: {amount}");
-        }
+        if (amount < 0) throw new InvalidDataException($"Money value cannot be negative: {amount}");
 
         return new Money(amount);
     }
@@ -27,9 +24,7 @@ public class Money
     public static Money From(string amount)
     {
         if (!decimal.TryParse(amount, out var tmpAmount))
-        {
             throw new InvalidDataException($"Money value must be a valid number: {amount}");
-        }
 
         return From(tmpAmount);
     }
@@ -88,7 +83,7 @@ public class Money
     {
         return money1.Amount > money2.Amount;
     }
-    
+
     public static bool operator <(Money money1, int money2)
     {
         return money1.Amount < money2;
@@ -98,7 +93,7 @@ public class Money
     {
         return money1.Amount >= money2;
     }
-    
+
     public static bool operator <=(Money money1, decimal money2)
     {
         return money1.Amount <= money2;
@@ -108,15 +103,15 @@ public class Money
     {
         return money1.Amount >= money2;
     }
-    
+
     public static Money Max(Money val1, Money val2)
     {
-        return (val1.Amount >= val2.Amount) ? val1 : val2;
+        return val1.Amount >= val2.Amount ? val1 : val2;
     }
-    
+
     public static Money Min(Money val1, Money val2)
     {
-        return (val1.Amount <= val2.Amount) ? val1 : val2;
+        return val1.Amount <= val2.Amount ? val1 : val2;
     }
 
     public override bool Equals(object? obj)

@@ -1,11 +1,13 @@
 namespace MoneyTracker.Common.Utilities.MoneyUtil;
+
 public class Percentage
 {
-    public decimal Value { get; }
     private Percentage(decimal percentage)
     {
         Value = percentage;
     }
+
+    public decimal Value { get; }
 
     public static Percentage From(decimal percentage)
     {

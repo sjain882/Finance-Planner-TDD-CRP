@@ -3,5 +3,4 @@
 public struct ErrorCode
 {
     public static string InvalidSalaryFrequency => "1";
-
 }

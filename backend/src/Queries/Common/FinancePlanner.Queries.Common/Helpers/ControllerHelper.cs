@@ -15,9 +15,7 @@ public class ControllerHelper
             .Headers.Authorization.ToString();
 
         if (!string.IsNullOrEmpty(authHeader) && authHeader.StartsWith("Bearer "))
-        {
             return authHeader.Substring("Bearer ".Length).Trim();
-        }
         return "";
     }
 
@@ -28,10 +26,9 @@ public class ControllerHelper
             {
                 Content = JsonSerializer.Serialize(result.Value),
                 ContentType = "application/json",
-                StatusCode = StatusCodes.Status200OK,
+                StatusCode = StatusCodes.Status200OK
             };
         if (result.Error != null)
-        {
             switch (result.Error.ErrorType)
             {
                 case ErrorType.NotFound:
@@ -39,21 +36,21 @@ public class ControllerHelper
                     {
                         Content = result.Error.Description,
                         ContentType = "text/plain",
-                        StatusCode = StatusCodes.Status404NotFound,
+                        StatusCode = StatusCodes.Status404NotFound
                     };
                 case ErrorType.AccessUnAuthorised:
                     return new ContentResult
                     {
                         Content = result.Error.Description,
                         ContentType = "text/plain",
-                        StatusCode = StatusCodes.Status401Unauthorized,
+                        StatusCode = StatusCodes.Status401Unauthorized
                     };
                 case ErrorType.Validation:
                     return new ContentResult
                     {
                         Content = result.Error.Description,
                         ContentType = "text/plain",
-                        StatusCode = StatusCodes.Status400BadRequest,
+                        StatusCode = StatusCodes.Status400BadRequest
                     };
                 case ErrorType.Failure:
                 default:
@@ -61,15 +58,15 @@ public class ControllerHelper
                     {
                         Content = result.Error.Description,
                         ContentType = "text/plain",
-                        StatusCode = StatusCodes.Status500InternalServerError,
+                        StatusCode = StatusCodes.Status500InternalServerError
                     };
             }
-        }
+
         return new ContentResult
         {
             Content = "Critical: result not successful but no error was found",
             ContentType = "text/plain",
-            StatusCode = StatusCodes.Status500InternalServerError,
+            StatusCode = StatusCodes.Status500InternalServerError
         };
     }
 }

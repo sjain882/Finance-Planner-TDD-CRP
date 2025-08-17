@@ -1,4 +1,4 @@
-﻿using FinancePlanner.Common.Models;
+﻿using FinancePlanner.Common.Helpers;
 using FinancePlanner.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Common.Utilities.Payment;
 using FinancePlanner.Common.Values;
@@ -36,13 +36,13 @@ public class WageCalculator : IWageService
 
         var yearlyIncome = wageResult.YearlySalary - wageResult.TaxedAmount;
         var monthlyIncome = yearlyIncome / 12;
-        
-        var repeatedPayments = new List<RepeatedPayment>()
+
+        var repeatedPayments = new List<RepeatedPayment>
         {
-            new RepeatedPayment(Money.From(monthlyIncome), 12)
+            new(Money.From(monthlyIncome), 12)
         };
-        
-        return new WageResponse()
+
+        return new WageResponse
         {
             GrossYearlyIncome = wageResult.YearlySalary,
             Wage = repeatedPayments

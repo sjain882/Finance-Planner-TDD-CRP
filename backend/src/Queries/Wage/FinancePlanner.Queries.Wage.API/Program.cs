@@ -1,6 +1,4 @@
-
 using FinancePlanner.Common.Utilities.DateTimeUtil;
-using FinancePlanner.Queries.Wage.API.Controllers;
 using FinancePlanner.Queries.Wage.Application;
 using FinancePlanner.Queries.Wage.Domain.Handlers;
 using Microsoft.OpenApi.Models;
@@ -16,7 +14,7 @@ public class Program
         // Add services to the container.
 
         builder.Services.AddControllers();
-        
+
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(config =>
@@ -51,7 +49,7 @@ public class Program
 
         builder.Services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
         builder.Services.AddSingleton<IWageService, WageCalculator>();
-        
+
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         // builder.Services.AddOpenApi();
 
