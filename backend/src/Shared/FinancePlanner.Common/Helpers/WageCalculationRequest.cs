@@ -10,4 +10,6 @@ public class WageCalculationRequest
     public SalaryFrequency SalaryFrequency { get; set; }
 
     public Money TaxFreeAmount { get; set; }
+    
+    public Money PersonalAllowance { get; set; }
 }

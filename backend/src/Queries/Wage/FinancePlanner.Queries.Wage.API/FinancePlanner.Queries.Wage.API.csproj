@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\FinancePlanner.Queries.Common\FinancePlanner.Queries.Common.csproj" />
     <ProjectReference Include="..\FinancePlanner.Queries.Wage.Application\FinancePlanner.Queries.Wage.Application.csproj" />
     <ProjectReference Include="..\FinancePlanner.Queries.Wage.Domain\FinancePlanner.Queries.Wage.Domain.csproj" />
   </ItemGroup>

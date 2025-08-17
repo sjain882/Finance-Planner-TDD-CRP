@@ -4,6 +4,10 @@ using FinancePlanner.Queries.Wage.Application;
 using FinancePlanner.Queries.Wage.Domain.Contracts.Response;
 using Microsoft.AspNetCore.Mvc;
 using FinancePlanner.Queries.Wage.Domain.Handlers;
+using FinancePlanner.Shared.Common.Result;
+using FinancePlanner.Common.Values;
+using FinancePlanner.Queries.Common.Helpers;
+using MoneyTracker.Common.Utilities.MoneyUtil;
 
 namespace FinancePlanner.Queries.Wage.API.Controllers;
 
@@ -20,20 +24,21 @@ public class WageController : ControllerBase
     }
 
     [HttpPost(Name = "calculate")]
-    public WageResponse CalculateWage(Public.WageCalculationRequest wageCalculationRequest)
+    public IActionResult CalculateWage(Public.WageCalculationRequest wageCalculationRequest)
     {
         var salaryFrequencySuccess= Enum.TryParse<SalaryFrequency>(wageCalculationRequest.SalaryFrequency, out var salaryFrequency);
 
         if (salaryFrequencySuccess)
         {
-            return _wageService.CalculateWage(new WageCalculationRequest
+            return ControllerHelper.Convert(_wageService.CalculateWage(new WageCalculationRequest
             {
-                Salary = wageCalculationRequest.Salary,
+                Salary = Money.From(wageCalculationRequest.Salary),
                 SalaryFrequency = salaryFrequency,
-                TaxFreeAmount = wageCalculationRequest.TaxFreeAmount
-            });
+                TaxFreeAmount = Money.From(wageCalculationRequest.TaxFreeAmount),
+                PersonalAllowance = Money.From(wageCalculationRequest.PersonalAllowance)
+            }));
         }
 
-        return null;
+        return ControllerHelper.Convert(ResultT<WageResponse>.Failure(Error.Validation(ErrorCode.InvalidSalaryFrequency, ErrorDescription.InvalidSalaryFrequency)));
     }
 }

@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Queries.Wage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Queries.Wage.API", "src\Queries\Wage\FinancePlanner.Queries.Wage.API\FinancePlanner.Queries.Wage.API.csproj", "{8E16FB02-2811-42A1-BBB8-C3FD9D00B7E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Queries.Common", "src\Queries\Common\FinancePlanner.Queries.Common\FinancePlanner.Queries.Common.csproj", "{DA79E079-D8C2-479F-A7F0-37DC347C8288}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,18 @@ Global
 		{8E16FB02-2811-42A1-BBB8-C3FD9D00B7E1}.Release|x64.Build.0 = Release|Any CPU
 		{8E16FB02-2811-42A1-BBB8-C3FD9D00B7E1}.Release|x86.ActiveCfg = Release|Any CPU
 		{8E16FB02-2811-42A1-BBB8-C3FD9D00B7E1}.Release|x86.Build.0 = Release|Any CPU
+		{DA79E079-D8C2-479F-A7F0-37DC347C8288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA79E079-D8C2-479F-A7F0-37DC347C8288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA79E079-D8C2-479F-A7F0-37DC347C8288}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DA79E079-D8C2-479F-A7F0-37DC347C8288}.Debug|x64.Build.0 = Debug|Any CPU
+		{DA79E079-D8C2-479F-A7F0-37DC347C8288}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DA79E079-D8C2-479F-A7F0-37DC347C8288}.Debug|x86.Build.0 = Debug|Any CPU
+		{DA79E079-D8C2-479F-A7F0-37DC347C8288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA79E079-D8C2-479F-A7F0-37DC347C8288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA79E079-D8C2-479F-A7F0-37DC347C8288}.Release|x64.ActiveCfg = Release|Any CPU
+		{DA79E079-D8C2-479F-A7F0-37DC347C8288}.Release|x64.Build.0 = Release|Any CPU
+		{DA79E079-D8C2-479F-A7F0-37DC347C8288}.Release|x86.ActiveCfg = Release|Any CPU
+		{DA79E079-D8C2-479F-A7F0-37DC347C8288}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,5 +133,6 @@ Global
 		{B1967147-DDD1-4289-A3F1-8D05162BD18D} = {E21131A9-272C-E2D3-BEB6-1A544885B88C}
 		{72162200-A210-4804-B68B-2407FFF4C725} = {E21131A9-272C-E2D3-BEB6-1A544885B88C}
 		{8E16FB02-2811-42A1-BBB8-C3FD9D00B7E1} = {E21131A9-272C-E2D3-BEB6-1A544885B88C}
+		{DA79E079-D8C2-479F-A7F0-37DC347C8288} = {A2985225-04B1-E9D8-08B0-BAA413BBDAE9}
 	EndGlobalSection
 EndGlobal

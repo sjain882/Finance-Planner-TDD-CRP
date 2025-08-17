@@ -2,8 +2,10 @@
 using FinancePlanner.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Common.Utilities.Payment;
 using FinancePlanner.Common.Values;
+using FinancePlanner.Queries.Wage.Application.TaxCode;
 using FinancePlanner.Queries.Wage.Domain.Contracts.Response;
 using FinancePlanner.Queries.Wage.Domain.Handlers;
+using FinancePlanner.Shared.Common.Result;
 using MoneyTracker.Common.Utilities.MoneyUtil;
 
 namespace FinancePlanner.Queries.Wage.Application;
@@ -17,9 +19,8 @@ public class WageCalculator : IWageService
         _dateTimeProvider = dateTimeProvider;
     }
 
-    public WageResponse CalculateWage(WageCalculationRequest calculationRequest)
+    public ResultT<WageResponse> CalculateWage(WageCalculationRequest calculationRequest)
     {
-        // AbstractHandler handler = new FromYearlySalary();
         IWageCalculator wageCalculator = calculationRequest.SalaryFrequency switch
         {
             SalaryFrequency.Yearly => new FromYearlySalary(),
@@ -29,11 +30,11 @@ public class WageCalculator : IWageService
             _ => throw new NotImplementedException()
         };
         wageCalculator = new GetTaxableIncome(wageCalculator, calculationRequest.TaxFreeAmount);
+        wageCalculator = new CalculateTaxCodeL(wageCalculator, calculationRequest.PersonalAllowance);
 
         var wageResult = wageCalculator.CalculateYearlyWage(calculationRequest.Salary);
 
         var yearlyIncome = wageResult.YearlySalary - wageResult.TaxedAmount;
-
         var monthlyIncome = yearlyIncome / 12;
         
         var repeatedPayments = new List<RepeatedPayment>()
