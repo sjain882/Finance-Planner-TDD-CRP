@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Commands.Wag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Commands.Wage.API", "src\Commands\Wage\FinancePlanner.Commands.Wage.API\FinancePlanner.Commands.Wage.API.csproj", "{C9A10F6D-430E-46F9-8CC9-0C979B72BCE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Commands.Wage.DatabaseMigration", "src\Commands\Wage\FinancePlanner.Commands.Wage.DatabaseMigration\FinancePlanner.Commands.Wage.DatabaseMigration.csproj", "{3B40C092-CC15-4D5F-BBAD-457C66003F75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -179,6 +181,18 @@ Global
 		{C9A10F6D-430E-46F9-8CC9-0C979B72BCE3}.Release|x64.Build.0 = Release|Any CPU
 		{C9A10F6D-430E-46F9-8CC9-0C979B72BCE3}.Release|x86.ActiveCfg = Release|Any CPU
 		{C9A10F6D-430E-46F9-8CC9-0C979B72BCE3}.Release|x86.Build.0 = Release|Any CPU
+		{3B40C092-CC15-4D5F-BBAD-457C66003F75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B40C092-CC15-4D5F-BBAD-457C66003F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B40C092-CC15-4D5F-BBAD-457C66003F75}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3B40C092-CC15-4D5F-BBAD-457C66003F75}.Debug|x64.Build.0 = Debug|Any CPU
+		{3B40C092-CC15-4D5F-BBAD-457C66003F75}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3B40C092-CC15-4D5F-BBAD-457C66003F75}.Debug|x86.Build.0 = Debug|Any CPU
+		{3B40C092-CC15-4D5F-BBAD-457C66003F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B40C092-CC15-4D5F-BBAD-457C66003F75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B40C092-CC15-4D5F-BBAD-457C66003F75}.Release|x64.ActiveCfg = Release|Any CPU
+		{3B40C092-CC15-4D5F-BBAD-457C66003F75}.Release|x64.Build.0 = Release|Any CPU
+		{3B40C092-CC15-4D5F-BBAD-457C66003F75}.Release|x86.ActiveCfg = Release|Any CPU
+		{3B40C092-CC15-4D5F-BBAD-457C66003F75}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -200,5 +214,6 @@ Global
 		{F3A82B11-2233-49D6-A711-692354F2A1A3} = {856C9F42-5577-4DD2-9613-95109E005869}
 		{E6221478-AA37-4F20-B978-198BE88ADA4E} = {856C9F42-5577-4DD2-9613-95109E005869}
 		{C9A10F6D-430E-46F9-8CC9-0C979B72BCE3} = {856C9F42-5577-4DD2-9613-95109E005869}
+		{3B40C092-CC15-4D5F-BBAD-457C66003F75} = {856C9F42-5577-4DD2-9613-95109E005869}
 	EndGlobalSection
 EndGlobal

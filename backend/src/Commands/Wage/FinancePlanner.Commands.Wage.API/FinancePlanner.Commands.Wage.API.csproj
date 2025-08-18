@@ -13,6 +13,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\..\Shared\FinancePlanner.Common\FinancePlanner.Common.csproj"/>
+        <ProjectReference Include="..\FinancePlanner.Commands.Wage.DatabaseMigration\FinancePlanner.Commands.Wage.DatabaseMigration.csproj" />
     </ItemGroup>
 
 </Project>

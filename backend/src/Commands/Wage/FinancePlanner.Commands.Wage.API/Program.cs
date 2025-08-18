@@ -67,6 +67,8 @@ public class Program
 
         app.MapControllers();
 
+        FinancePlanner.Commands.Wage.DatabaseMigration.Program.Main(args);
+
         app.Run();
     }
 }

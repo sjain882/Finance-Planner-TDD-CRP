@@ -3,18 +3,16 @@ services:
     image: postgres:17-alpine
     container_name: postgres-master
     ports:
-      - ${DOCKER_DB_OUTBOUND_PORT}:5432
+      - 5432:5432
     environment:
-      - POSTGRES_DB=${DOCKER_DB_DATABASE}
-      - POSTGRES_USER=${DOCKER_DB_USERNAME}
-      - POSTGRES_PASSWORD=${DOCKER_DB_PASSWORD}
+      - POSTGRES_DB=root
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DOCKER_DB_USERNAME}"]
+      test: ["CMD-SHELL", "pg_isready -U root"]
       interval: 5s
       timeout: 5s
       retries: 5
-    volumes:
-      - master-database:/var/lib/postgresql/data
 
   be-queries:
     build:
@@ -23,6 +21,7 @@ services:
     ports:
       - 1235:8080
     environment:
+        ASPNETCORE_ENVIRONMENT: "Development"
     links:
       - postgres-master
     depends_on:
