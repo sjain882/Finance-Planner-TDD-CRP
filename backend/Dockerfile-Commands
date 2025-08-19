@@ -1,0 +1,34 @@
+# Use the official .NET SDK image for building
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+
+WORKDIR /app
+
+# Copy only the csproj files first and restore (cacheable step)
+COPY *.sln .
+COPY ./src/Commands/Wage/*/*.csproj .
+RUN for file in $(ls *.csproj); do mkdir -p src/Commands/Wage/${file%.*}/ && mv $file src/Commands/Wage/${file%.*}/; done
+COPY ./src/Queries/Common/*/*.csproj .
+RUN for file in $(ls *.csproj); do mkdir -p src/Queries/Common/${file%.*}/ && mv $file src/Queries/Common/${file%.*}/; done
+COPY ./src/Queries/Wage/*/*.csproj .
+RUN for file in $(ls *.csproj); do mkdir -p src/Queries/Wage/${file%.*}/ && mv $file src/Queries/Wage/${file%.*}/; done
+COPY ./src/Shared/*/*.csproj .
+RUN for file in $(ls *.csproj); do mkdir -p src/Shared/${file%.*}/ && mv $file src/Shared/${file%.*}/; done
+
+# Automatic hashing to check if any files changed
+RUN dotnet restore
+RUN ls -R
+
+# Now copy the rest of the source
+COPY . .
+
+# Build and publish
+# Using --no-restore because if something hasn't been restored
+# (e.g, due to wrong paths), it will throw an error here
+RUN dotnet publish -c Release -o ./app --no-restore
+
+# Runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/app ./
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "FinancePlanner.Commands.Wage.API.dll"]
