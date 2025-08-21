@@ -1,4 +1,7 @@
 using FinancePlanner.Common.Utilities.DateTimeUtil;
+using FinancePlanner.Commands.Wage.Application;
+using FinancePlanner.Commands.Wage.Domain.Handlers;
+using FinancePlanner.Commands.Wage.Repository;
 using Microsoft.OpenApi.Models;
 
 namespace FinancePlanner.Queries.Wage.API;
@@ -45,10 +48,14 @@ public class Program
             });
         });
 
-        builder.Services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         // builder.Services.AddOpenApi();
+
+        
+        builder.Services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+        builder.Services.AddSingleton<IWageRepository, WageRepository>();
+        builder.Services.AddSingleton<IWageService, WageService>();
 
         var app = builder.Build();
 

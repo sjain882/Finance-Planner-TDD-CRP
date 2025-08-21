@@ -1,4 +1,4 @@
-﻿namespace FinancePlanner.Queries.Wage.API.Public;
+﻿namespace FinancePlanner.Queries.Domain.Contracts.Request;
 
 public class WageCalculationRequest
 {

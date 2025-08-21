@@ -7,16 +7,21 @@ WORKDIR /app
 COPY *.sln .
 COPY ./src/Commands/Wage/*/*.csproj .
 RUN for file in $(ls *.csproj); do mkdir -p src/Commands/Wage/${file%.*}/ && mv $file src/Commands/Wage/${file%.*}/; done
+COPY ./src/Commands/Common/*/*.csproj .
+RUN for file in $(ls *.csproj); do mkdir -p src/Commands/Common/${file%.*}/ && mv $file src/Commands/Common/${file%.*}/; done
+COPY ./src/Commands/Wage/*/*.csproj .
+RUN for file in $(ls *.csproj); do mkdir -p src/Commands/Wage/${file%.*}/ && mv $file src/Commands/Wage/${file%.*}/; done
+COPY ./src/Shared/*/*.csproj .
+RUN for file in $(ls *.csproj); do mkdir -p src/Shared/${file%.*}/ && mv $file src/Shared/${file%.*}/; done
+COPY ./src/Queries/Wage/*/*.csproj .
+RUN for file in $(ls *.csproj); do mkdir -p src/Queries/Wage/${file%.*}/ && mv $file src/Queries/Wage/${file%.*}/; done
 COPY ./src/Queries/Common/*/*.csproj .
 RUN for file in $(ls *.csproj); do mkdir -p src/Queries/Common/${file%.*}/ && mv $file src/Queries/Common/${file%.*}/; done
 COPY ./src/Queries/Wage/*/*.csproj .
 RUN for file in $(ls *.csproj); do mkdir -p src/Queries/Wage/${file%.*}/ && mv $file src/Queries/Wage/${file%.*}/; done
-COPY ./src/Shared/*/*.csproj .
-RUN for file in $(ls *.csproj); do mkdir -p src/Shared/${file%.*}/ && mv $file src/Shared/${file%.*}/; done
 
 # Automatic hashing to check if any files changed
 RUN dotnet restore
-RUN ls -R
 
 # Now copy the rest of the source
 COPY . .

@@ -1,6 +1,6 @@
 ﻿using FinancePlanner.Common.Values;
 using FinancePlanner.Queries.Common.Helpers;
-using FinancePlanner.Queries.Wage.API.Public;
+using FinancePlanner.Queries.Domain.Contracts.Request;
 using FinancePlanner.Queries.Wage.Domain.Contracts.Response;
 using FinancePlanner.Queries.Wage.Domain.Handlers;
 using FinancePlanner.Shared.Common.Result;
