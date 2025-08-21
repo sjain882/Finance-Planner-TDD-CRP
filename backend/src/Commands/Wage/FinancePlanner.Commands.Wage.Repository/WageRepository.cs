@@ -1,40 +1,36 @@
-﻿using FinancePlanner.Commands.Wage.Domain.Contracts.Request;
+﻿using System.Data.Common;
+using FinancePlanner.Commands.Wage.Domain.Contracts.Request;
 using Npgsql;
 
 namespace FinancePlanner.Commands.Wage.Repository;
 
 public class WageRepository : IWageRepository
 {
-    public const string connectionString = "User ID=root;Password=root;Host=postgres-master;Port=5432;Database=root;";
+    private readonly IDatabaseQuery _databaseQuery;
+    public const string connectionString = "User ID=root;Password=root;Host=postgres-master;Port=5432;DatabaseQuery=root;";
     
-    public WageRepository()
+    public WageRepository(IDatabaseQuery databaseQuery)
     {
-        
+        _databaseQuery = databaseQuery;
     }
     
     public async Task AddWage(AddWageRequest addWageRequest)
     {
-        await using var dataSource = NpgsqlDataSource.Create(connectionString);
-        
-        await using (var cmd = dataSource.CreateCommand(
-                         """
-                         INSERT INTO Wage (datepaid, userid, value)
-                         VALUES (@datepaid, @userid, @value);
-                         """))
+        var query = """
+                    INSERT INTO Wage (datepaid, userid, value)
+                    VALUES (@datepaid, @userid, @value);
+                    """;
+
+        var parameters = new List<DbParameter>()
         {
-            // Assuming `id` is auto-generated normally, 
-            // but if you must set it manually:
-            cmd.Parameters.AddWithValue("@id", NpgsqlTypes.NpgsqlDbType.Integer, 1);
-
-            cmd.Parameters.AddWithValue("@datepaid", NpgsqlTypes.NpgsqlDbType.Date, addWageRequest.DatePaid);
-            cmd.Parameters.AddWithValue("@userid", NpgsqlTypes.NpgsqlDbType.Integer, addWageRequest.UserID);
-            cmd.Parameters.AddWithValue("@value", NpgsqlTypes.NpgsqlDbType.Numeric, addWageRequest.Value);
-
-            await cmd.ExecuteNonQueryAsync();
-        }
+            // new NpgsqlParameter("@id", 1),
+            new NpgsqlParameter("@datepaid", addWageRequest.DatePaid),
+            new NpgsqlParameter("@userid", addWageRequest.UserID),
+            new NpgsqlParameter("@value", addWageRequest.Value)
+        };
+        
+        await _databaseQuery.UpdateTable(query, parameters);
     }
-
-
 
     public async Task RetrieveAll()
     {

@@ -15,6 +15,7 @@
     <PackageReference Include="NUnit" Version="4.2.2" />
     <PackageReference Include="NUnit.Analyzers" Version="4.4.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
+    <PackageReference Include="Testcontainers.PostgreSql" Version="4.6.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FinancePlanner.Commands.Wage.Application\FinancePlanner.Commands.Wage.Application.csproj" />
+    <ProjectReference Include="..\FinancePlanner.Commands.Wage.DatabaseMigration\FinancePlanner.Commands.Wage.DatabaseMigration.csproj" />
     <ProjectReference Include="..\FinancePlanner.Commands.Wage.Domain\FinancePlanner.Commands.Wage.Domain.csproj" />
     <ProjectReference Include="..\FinancePlanner.Commands.Wage.Repository\FinancePlanner.Commands.Wage.Repository.csproj" />
   </ItemGroup>
