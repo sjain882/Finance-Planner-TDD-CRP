@@ -1,4 +1,4 @@
-﻿namespace FinancePlanner.Queries.Domain.Contracts.Request;
+﻿namespace FinancePlanner.Queries.Wage.Domain.Contracts.Request;
 
 public class WageCalculationRequest
 {

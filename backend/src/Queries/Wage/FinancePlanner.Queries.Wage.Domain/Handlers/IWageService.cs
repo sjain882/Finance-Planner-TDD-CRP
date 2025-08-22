@@ -6,5 +6,7 @@ namespace FinancePlanner.Queries.Wage.Domain.Handlers;
 
 public interface IWageService
 {
-    ResultT<WageResponse> CalculateWage(WageCalculationRequest request);
+    ResultT<WageCalculationResponse> CalculateWage(WageCalculationRequest request);
+
+    Task<ResultT<List<WageResponse>>> GetAllWages();
 }

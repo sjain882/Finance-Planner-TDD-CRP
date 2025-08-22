@@ -1,6 +1,6 @@
 ﻿using FinancePlanner.Common.Values;
 using FinancePlanner.Queries.Common.Helpers;
-using FinancePlanner.Queries.Domain.Contracts.Request;
+using FinancePlanner.Queries.Wage.Domain.Contracts.Request;
 using FinancePlanner.Queries.Wage.Domain.Contracts.Response;
 using FinancePlanner.Queries.Wage.Domain.Handlers;
 using FinancePlanner.Shared.Common.Result;
@@ -36,7 +36,16 @@ public class WageController : ControllerBase
                     PersonalAllowance = Money.From(wageCalculationRequest.PersonalAllowance)
                 }));
 
-        return ControllerHelper.Convert(ResultT<WageResponse>.Failure(Error.Validation(ErrorCode.InvalidSalaryFrequency,
+        return ControllerHelper.Convert(ResultT<WageCalculationResponse>.Failure(Error.Validation(ErrorCode.InvalidSalaryFrequency,
+            ErrorDescription.InvalidSalaryFrequency)));
+    }
+    
+    [HttpGet(Name = "getallwages")]
+    public async Task<IActionResult> GetAllWages()
+    {
+        return ControllerHelper.Convert(await _wageService.GetAllWages());
+
+        return ControllerHelper.Convert(ResultT<WageCalculationResponse>.Failure(Error.Validation(ErrorCode.InvalidSalaryFrequency,
             ErrorDescription.InvalidSalaryFrequency)));
     }
 }

@@ -54,7 +54,7 @@ public class Program
 
         
         builder.Services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-        builder.Services.AddSingleton<IDatabaseQuery>(new DatabaseQuery("User ID=root;Password=root;Host=postgres-master;Port=5432;DatabaseQuery=root;"));
+        builder.Services.AddSingleton<IDatabaseQuery>(new DatabaseQuery("User ID=root;Password=root;Host=postgres-master;Port=5432;Database=root;"));
         builder.Services.AddSingleton<IWageRepository, WageRepository>();
         builder.Services.AddSingleton<IWageService, WageService>();
 

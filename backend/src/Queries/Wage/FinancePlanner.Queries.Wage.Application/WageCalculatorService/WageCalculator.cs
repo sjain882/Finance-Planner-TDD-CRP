@@ -11,7 +11,7 @@ using MoneyTracker.Common.Utilities.MoneyUtil;
 
 namespace FinancePlanner.Queries.Wage.Application.WageCalculatorService;
 
-public class WageCalculator : IWageService
+public class WageCalculator : IWageCalculatorService
 {
     private readonly IDateTimeProvider _dateTimeProvider;
 
@@ -20,7 +20,7 @@ public class WageCalculator : IWageService
         _dateTimeProvider = dateTimeProvider;
     }
 
-    public ResultT<WageResponse> CalculateWage(WageCalculationRequest calculationRequest)
+    public ResultT<WageCalculationResponse> CalculateWage(WageCalculationRequest calculationRequest)
     {
         IWageCalculator wageCalculator = calculationRequest.SalaryFrequency switch
         {
@@ -43,7 +43,7 @@ public class WageCalculator : IWageService
             new(monthlyIncome, 12)
         };
 
-        return new WageResponse
+        return new WageCalculationResponse
         {
             GrossYearlyIncome = wageResult.YearlySalary,
             Wage = repeatedPayments

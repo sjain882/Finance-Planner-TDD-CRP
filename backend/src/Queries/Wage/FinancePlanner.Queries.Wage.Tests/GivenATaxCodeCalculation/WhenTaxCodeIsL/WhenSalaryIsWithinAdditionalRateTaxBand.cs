@@ -1,5 +1,6 @@
 ﻿using FinancePlanner.Queries.Wage.Application;
 using FinancePlanner.Queries.Wage.Application.WageCalculatorService;
+using FinancePlanner.Queries.Wage.Application.WageCalculatorService.Handlers;
 using FinancePlanner.Queries.Wage.Application.WageCalculatorService.Handlers.TaxCode;
 using MoneyTracker.Common.Utilities.MoneyUtil;
 using Moq;

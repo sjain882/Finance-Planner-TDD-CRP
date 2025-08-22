@@ -9,6 +9,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\..\Shared\FinancePlanner.Common\FinancePlanner.Common.csproj"/>
         <ProjectReference Include="..\FinancePlanner.Queries.Wage.Domain\FinancePlanner.Queries.Wage.Domain.csproj"/>
+        <ProjectReference Include="..\FinancePlanner.Queries.Wage.Repository\FinancePlanner.Queries.Wage.Repository.csproj" />
     </ItemGroup>
 
 </Project>

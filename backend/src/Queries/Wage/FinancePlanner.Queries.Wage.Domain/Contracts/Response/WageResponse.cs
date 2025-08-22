@@ -1,10 +1,10 @@
-﻿using FinancePlanner.Common.Utilities.Payment;
-using MoneyTracker.Common.Utilities.MoneyUtil;
-
-namespace FinancePlanner.Queries.Wage.Domain.Contracts.Response;
+﻿namespace FinancePlanner.Queries.Wage.Domain.Contracts.Response;
 
 public class WageResponse
 {
-    public Money GrossYearlyIncome { get; set; }
-    public List<RepeatedPayment> Wage { get; set; }
+    public DateTime DatePaid { get; set; }
+    
+    public int UserID { get; set; }
+
+    public decimal Value { get; set; }
 }
