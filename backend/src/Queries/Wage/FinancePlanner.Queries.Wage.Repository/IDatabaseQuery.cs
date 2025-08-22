@@ -1,10 +1,9 @@
 ﻿using System.Data;
 using System.Data.Common;
 
-namespace FinancePlanner.Commands.Wage.Repository;
+namespace FinancePlanner.Queries.Wage.Repository;
 
 public interface IDatabaseQuery
 {
-    public Task UpdateTable(string query, List<DbParameter> parameters = null);
     public Task<DataTable> GetTable(string query, List<DbParameter>? parameters = null);
 }

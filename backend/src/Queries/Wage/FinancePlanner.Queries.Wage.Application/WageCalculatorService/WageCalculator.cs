@@ -2,13 +2,14 @@
 using FinancePlanner.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Common.Utilities.Payment;
 using FinancePlanner.Common.Values;
-using FinancePlanner.Queries.Wage.Application.TaxCode;
+using FinancePlanner.Queries.Wage.Application.WageCalculatorService.Handlers;
+using FinancePlanner.Queries.Wage.Application.WageCalculatorService.Handlers.TaxCode;
 using FinancePlanner.Queries.Wage.Domain.Contracts.Response;
 using FinancePlanner.Queries.Wage.Domain.Handlers;
 using FinancePlanner.Shared.Common.Result;
 using MoneyTracker.Common.Utilities.MoneyUtil;
 
-namespace FinancePlanner.Queries.Wage.Application;
+namespace FinancePlanner.Queries.Wage.Application.WageCalculatorService;
 
 public class WageCalculator : IWageService
 {
@@ -39,7 +40,7 @@ public class WageCalculator : IWageService
 
         var repeatedPayments = new List<RepeatedPayment>
         {
-            new(Money.From(monthlyIncome), 12)
+            new(monthlyIncome, 12)
         };
 
         return new WageResponse

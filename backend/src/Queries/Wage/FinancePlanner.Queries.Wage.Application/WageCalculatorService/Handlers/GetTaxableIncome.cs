@@ -1,6 +1,6 @@
 ﻿using MoneyTracker.Common.Utilities.MoneyUtil;
 
-namespace FinancePlanner.Queries.Wage.Application;
+namespace FinancePlanner.Queries.Wage.Application.WageCalculatorService.Handlers;
 
 public class GetTaxableIncome : IWageCalculator
 {

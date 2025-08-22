@@ -2,7 +2,7 @@
 using FinancePlanner.Common.Utilities.DateTimeUtil;
 using MoneyTracker.Common.Utilities.MoneyUtil;
 
-namespace FinancePlanner.Queries.Wage.Application;
+namespace FinancePlanner.Queries.Wage.Application.WageCalculatorService.Handlers;
 
 public class FromWeeklySalary : IWageCalculator
 {

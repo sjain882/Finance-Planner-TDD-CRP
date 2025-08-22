@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Commands.Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Commands.Wage.Tests", "src\Commands\Wage\FinancePlanner.Commands.Wage.Tests\FinancePlanner.Commands.Wage.Tests.csproj", "{4C1F5587-63CB-4BBC-8274-51F526E4ED65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Queries.Wage.Repository", "src\Queries\Wage\FinancePlanner.Queries.Wage.Repository\FinancePlanner.Queries.Wage.Repository.csproj", "{033F0747-1F02-46BD-810A-606DAD2E1EC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -221,6 +223,18 @@ Global
 		{4C1F5587-63CB-4BBC-8274-51F526E4ED65}.Release|x64.Build.0 = Release|Any CPU
 		{4C1F5587-63CB-4BBC-8274-51F526E4ED65}.Release|x86.ActiveCfg = Release|Any CPU
 		{4C1F5587-63CB-4BBC-8274-51F526E4ED65}.Release|x86.Build.0 = Release|Any CPU
+		{033F0747-1F02-46BD-810A-606DAD2E1EC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{033F0747-1F02-46BD-810A-606DAD2E1EC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{033F0747-1F02-46BD-810A-606DAD2E1EC0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{033F0747-1F02-46BD-810A-606DAD2E1EC0}.Debug|x64.Build.0 = Debug|Any CPU
+		{033F0747-1F02-46BD-810A-606DAD2E1EC0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{033F0747-1F02-46BD-810A-606DAD2E1EC0}.Debug|x86.Build.0 = Debug|Any CPU
+		{033F0747-1F02-46BD-810A-606DAD2E1EC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{033F0747-1F02-46BD-810A-606DAD2E1EC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{033F0747-1F02-46BD-810A-606DAD2E1EC0}.Release|x64.ActiveCfg = Release|Any CPU
+		{033F0747-1F02-46BD-810A-606DAD2E1EC0}.Release|x64.Build.0 = Release|Any CPU
+		{033F0747-1F02-46BD-810A-606DAD2E1EC0}.Release|x86.ActiveCfg = Release|Any CPU
+		{033F0747-1F02-46BD-810A-606DAD2E1EC0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -245,5 +259,6 @@ Global
 		{3B40C092-CC15-4D5F-BBAD-457C66003F75} = {856C9F42-5577-4DD2-9613-95109E005869}
 		{6F9A1CE9-DE95-410F-8B31-B50110EDEE5D} = {A9E726B3-BFCE-420C-AC7F-0CBDBE24E7EA}
 		{4C1F5587-63CB-4BBC-8274-51F526E4ED65} = {856C9F42-5577-4DD2-9613-95109E005869}
+		{033F0747-1F02-46BD-810A-606DAD2E1EC0} = {E21131A9-272C-E2D3-BEB6-1A544885B88C}
 	EndGlobalSection
 EndGlobal

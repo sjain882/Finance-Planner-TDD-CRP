@@ -1,5 +1,6 @@
 using FinancePlanner.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Queries.Wage.Application;
+using FinancePlanner.Queries.Wage.Application.WageCalculatorService;
 using FinancePlanner.Queries.Wage.Domain.Handlers;
 using Microsoft.OpenApi.Models;
 

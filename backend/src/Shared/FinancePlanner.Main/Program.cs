@@ -2,6 +2,7 @@
 using FinancePlanner.Common.Utilities.DateTimeUtil;
 using FinancePlanner.Common.Values;
 using FinancePlanner.Queries.Wage.Application;
+using FinancePlanner.Queries.Wage.Application.WageCalculatorService;
 using MoneyTracker.Common.Utilities.MoneyUtil;
 
 namespace FinancePlanner.Main;

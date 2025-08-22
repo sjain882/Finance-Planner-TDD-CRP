@@ -1,6 +1,6 @@
 ﻿using MoneyTracker.Common.Utilities.MoneyUtil;
 
-namespace FinancePlanner.Queries.Wage.Application.TaxCode;
+namespace FinancePlanner.Queries.Wage.Application.WageCalculatorService.Handlers.TaxCode;
 
 public class CalculateTaxCodeL : IWageCalculator
 {
