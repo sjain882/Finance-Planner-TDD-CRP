@@ -20,7 +20,8 @@ public class WageController : ControllerBase
         _wageService = wageService;
     }
 
-    [HttpPost(Name = "calculate")]
+    [HttpPost]
+    [Route("calculate")]
     public IActionResult CalculateWage(WageCalculationRequest wageCalculationRequest)
     {
         var salaryFrequencySuccess =
@@ -40,7 +41,8 @@ public class WageController : ControllerBase
             ErrorDescription.InvalidSalaryFrequency)));
     }
     
-    [HttpGet(Name = "getallwages")]
+    [HttpGet]
+    [Route("all")]
     public async Task<IActionResult> GetAllWages()
     {
         return ControllerHelper.Convert(await _wageService.GetAllWages());
