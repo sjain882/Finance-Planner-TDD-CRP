@@ -1,5 +1,4 @@
-﻿using FinancePlanner.Queries.Wage.Domain.Contracts.Request;
-using FinancePlanner.Queries.Wage.Domain.Contracts.Response;
+﻿using FinancePlanner.Queries.Wage.Domain.Contracts.Response;
 using FinancePlanner.Shared.Common.Result;
 
 namespace FinancePlanner.Queries.Wage.Repository;
@@ -7,4 +6,5 @@ namespace FinancePlanner.Queries.Wage.Repository;
 public interface IWageRepository
 {
     public Task<ResultT<List<WageResponse>>> GetAllWages();
+    public Task<ResultT<List<WageResponse>>> GetEmployeeWage(int userid);
 }
