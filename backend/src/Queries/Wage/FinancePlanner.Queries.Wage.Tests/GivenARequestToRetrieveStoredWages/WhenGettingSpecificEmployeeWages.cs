@@ -14,7 +14,7 @@ public class WhenGettingSpecificEmployeeWages
     private const int Amount = 123;
     private DateTime datePaid;
     public DatabaseQuery _databaseQuery;
-    private ResultT<List<WageResponse>> _wageListResult;
+    private ResultT<List<DayWageResponse>> _wageListResult;
 
     [OneTimeSetUp]
     public async Task SetUp()

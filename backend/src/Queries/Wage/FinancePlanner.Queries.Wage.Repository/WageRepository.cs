@@ -16,7 +16,7 @@ public class WageRepository : IWageRepository
         _databaseQuery = databaseQuery;
     }
     
-    public async Task<ResultT<List<WageResponse>>> GetAllWages()
+    public async Task<ResultT<List<DayWageResponse>>> GetAllWages()
     {
         var query = """
                     SELECT datepaid, userid, value
@@ -25,11 +25,11 @@ public class WageRepository : IWageRepository
         
         var x = await _databaseQuery.GetTable(query);
 
-        List<WageResponse> wages = new List<WageResponse>();
+        List<DayWageResponse> wages = new List<DayWageResponse>();
         
         foreach (DataRow row in x.Rows)
         {
-            wages.Add(new WageResponse
+            wages.Add(new DayWageResponse
             {
                 DatePaid = row.Field<DateTime>("datepaid"),
                 UserID   = row.Field<int>("userid"),
@@ -40,7 +40,7 @@ public class WageRepository : IWageRepository
         return wages;
     }
 
-    public async Task<ResultT<List<WageResponse>>> GetEmployeeWage(int userid)
+    public async Task<ResultT<List<DayWageResponse>>> GetEmployeeWage(int userid)
     {
         var query = """
                     SELECT datepaid, userid, value
@@ -55,11 +55,11 @@ public class WageRepository : IWageRepository
         
         var x = await _databaseQuery.GetTable(query, parameters);
         
-        List<WageResponse> wages = new List<WageResponse>();
+        List<DayWageResponse> wages = new List<DayWageResponse>();
         
         foreach (DataRow row in x.Rows)
         {
-            wages.Add(new WageResponse
+            wages.Add(new DayWageResponse
             {
                 DatePaid = row.Field<DateTime>("datepaid"),
                 UserID   = row.Field<int>("userid"),

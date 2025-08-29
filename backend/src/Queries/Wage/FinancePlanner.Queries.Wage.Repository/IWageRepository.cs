@@ -5,6 +5,6 @@ namespace FinancePlanner.Queries.Wage.Repository;
 
 public interface IWageRepository
 {
-    public Task<ResultT<List<WageResponse>>> GetAllWages();
-    public Task<ResultT<List<WageResponse>>> GetEmployeeWage(int userid);
+    public Task<ResultT<List<DayWageResponse>>> GetAllWages();
+    public Task<ResultT<List<DayWageResponse>>> GetEmployeeWage(int userid);
 }
