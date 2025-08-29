@@ -1,7 +1,8 @@
 ﻿namespace FinancePlanner.Queries.Wage.Domain.Contracts.Response;
 
-public class WageResponse
+public class DayWageResponse
 {
+    // Time doesn't matter here
     public DateTime DatePaid { get; set; }
     
     public int UserID { get; set; }

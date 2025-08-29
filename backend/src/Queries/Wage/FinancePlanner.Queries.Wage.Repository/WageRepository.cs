@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.Common;
-using FinancePlanner.Commands.Wage.Domain.Contracts.Request;
 using FinancePlanner.Queries.Wage.Domain.Contracts.Response;
 using FinancePlanner.Shared.Common.Result;
 using Npgsql;
@@ -17,7 +16,7 @@ public class WageRepository : IWageRepository
         _databaseQuery = databaseQuery;
     }
     
-    public async Task<ResultT<List<WageResponse>>> GetAllWages()
+    public async Task<ResultT<List<DayWageResponse>>> GetAllWages()
     {
         var query = """
                     SELECT datepaid, userid, value
@@ -26,11 +25,41 @@ public class WageRepository : IWageRepository
         
         var x = await _databaseQuery.GetTable(query);
 
-        List<WageResponse> wages = new List<WageResponse>();
+        List<DayWageResponse> wages = new List<DayWageResponse>();
         
         foreach (DataRow row in x.Rows)
         {
-            wages.Add(new WageResponse
+            wages.Add(new DayWageResponse
+            {
+                DatePaid = row.Field<DateTime>("datepaid"),
+                UserID   = row.Field<int>("userid"),
+                Value    = row.Field<decimal>("value")
+            });
+        }
+
+        return wages;
+    }
+
+    public async Task<ResultT<List<DayWageResponse>>> GetEmployeeWage(int userid)
+    {
+        var query = """
+                    SELECT datepaid, userid, value
+                    FROM Wage
+                    WHERE userid = @userid
+                    """;
+        
+        var parameters = new List<DbParameter>()
+        {
+            new NpgsqlParameter("@userid", userid),
+        };
+        
+        var x = await _databaseQuery.GetTable(query, parameters);
+        
+        List<DayWageResponse> wages = new List<DayWageResponse>();
+        
+        foreach (DataRow row in x.Rows)
+        {
+            wages.Add(new DayWageResponse
             {
                 DatePaid = row.Field<DateTime>("datepaid"),
                 UserID   = row.Field<int>("userid"),

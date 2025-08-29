@@ -1,9 +1,4 @@
-﻿using System.Data;
-using System.Data.Common;
-using FinancePlanner.Commands.Wage.Domain.Contracts.Request;
-using FinancePlanner.Queries.Wage.Domain.Contracts.Request;
-using FinancePlanner.Queries.Wage.DatabaseMigration;
-using FinancePlanner.Queries.Wage.Domain.Contracts.Request;
+﻿using FinancePlanner.Queries.Wage.DatabaseMigration;
 using FinancePlanner.Queries.Wage.Domain.Contracts.Response;
 using FinancePlanner.Queries.Wage.Repository;
 using FinancePlanner.Shared.Common.Result;
@@ -12,7 +7,7 @@ using Testcontainers.PostgreSql;
 
 namespace FinancePlanner.Queries.Wage.Tests.GivenARequestToRetrieveStoredWages;
 
-public class WhenGettingAllWages
+public class WhenGettingSpecificEmployeeWages
 {
     public PostgreSqlContainer _postgres;
     private const int UserID = 1;
@@ -41,7 +36,7 @@ public class WhenGettingAllWages
             
         var wageRepository = new WageRepository(_databaseQuery);
 
-        _wageListResult = await wageRepository.GetAllWages();
+        _wageListResult = await wageRepository.GetEmployeeWage(1);
     }
 
     public async Task Setup_SeedDatabase()
@@ -76,6 +71,14 @@ public class WhenGettingAllWages
     }
 
     [Test]
+    public void ThenOnlyCorrectUsersWagesAreRetrieved()
+    {
+        foreach (var x in _wageListResult.Value)
+        {
+            Assert.That(x.UserID, Is.EqualTo(1));
+        }
+    }
+    
     public void ThenCorrectWagesAreRetrievedFromDatabase()
     {
         var wageResult1 = _wageListResult.Value[0];
@@ -84,13 +87,5 @@ public class WhenGettingAllWages
         Assert.That(wageResult1.UserID, Is.EqualTo(1));
         
         Assert.That(wageResult1.Value, Is.EqualTo(20000));
-
-
-        var valueResult2 = _wageListResult.Value[1];
-        Assert.That(valueResult2.DatePaid, Is.EqualTo(DateTime.Parse("2016-05-12T00:00:00+00:00").ToUniversalTime()));
-
-        Assert.That(valueResult2.UserID, Is.EqualTo(2));
-        
-        Assert.That(valueResult2.Value, Is.EqualTo(50000));
     }
 }
