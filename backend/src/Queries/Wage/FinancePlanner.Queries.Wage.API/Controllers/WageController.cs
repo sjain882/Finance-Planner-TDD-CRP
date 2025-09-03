@@ -25,7 +25,7 @@ public class WageController : ControllerBase
     public IActionResult CalculateWage(WageCalculationRequest wageCalculationRequest)
     {
         var salaryFrequencySuccess =
-            Enum.TryParse<SalaryFrequency>(wageCalculationRequest.SalaryFrequency, out var salaryFrequency);
+            Enum.TryParse<SalaryFrequency>(wageCalculationRequest.SalaryFrequency, true, out var salaryFrequency);
 
         if (salaryFrequencySuccess)
             return ControllerHelper.Convert(_wageService.CalculateWage(
