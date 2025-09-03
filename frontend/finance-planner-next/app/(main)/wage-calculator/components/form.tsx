@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { z } from "zod"
+import { WageCalculationRequest } from "@/interface/WageCalculationRequest";
 
 import { Button } from "@/components/ui/button"
 import {
@@ -16,6 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { calculateWage } from "./action"
 
 const FormSchema = z.object({
   salary: z.coerce.number(),
@@ -43,6 +45,11 @@ export function WageCalculatorForm() {
         </pre>
       ),
     })
+
+    var x = calculateWage(data.salary, data.salaryFrequency, data.taxFreeAmount, data.personalAllowance)
+
+    console.log(x)
+
   }
 
   return (
