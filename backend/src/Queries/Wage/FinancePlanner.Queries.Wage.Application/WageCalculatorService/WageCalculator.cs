@@ -38,14 +38,14 @@ public class WageCalculator : IWageCalculatorService
         var yearlyIncome = wageResult.YearlySalary - wageResult.TaxedAmount;
         var monthlyIncome = yearlyIncome / 12;
 
-        var repeatedPayments = new List<RepeatedPayment>
+        var repeatedPayments = new List<RepeatedPaymentResponse>
         {
-            new(monthlyIncome, 12)
+            new(monthlyIncome.Amount, 12)
         };
 
         return new WageCalculationResponse
         {
-            GrossYearlyIncome = wageResult.YearlySalary,
+            GrossYearlyIncome = (decimal)wageResult.YearlySalary.Amount,
             Wage = repeatedPayments
         };
 

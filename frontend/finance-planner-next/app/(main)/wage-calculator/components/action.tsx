@@ -20,14 +20,16 @@ export async function calculateWage(salary: number, salaryFrequency: string, tax
         }),
     });
     if (response.ok) {
-        return JSON.parse(JSON.stringify(await response.text()));
+        var x = await response.json()
+        console.log(x)
+        return JSON.parse(JSON.stringify(x));
     }
 
     console.log("error returned add new account");
 
-    var x = response.text
+    var x2 = response.text
 
-    console.log(x)
+    console.log(x2)
 
     return JSON.parse(JSON.stringify(await response.text()));
 }
