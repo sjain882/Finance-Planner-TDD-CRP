@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { calculateWage } from "./action"
+import { useState } from "react"
+import { WageCalculationResponse } from "@/interface/WageCalculationResponse"
 
 const FormSchema = z.object({
   salary: z.coerce.number(),
@@ -27,6 +29,9 @@ const FormSchema = z.object({
 })
 
 export function WageCalculatorForm() {
+
+  const [addWageCalculationResponseMessage, setWageCalculationResponseMessage] = useState<WageCalculationResponse | null>(null);
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -37,7 +42,7 @@ export function WageCalculatorForm() {
     },
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
     toast("You submitted the following values", {
       description: (
         <pre className="mt-2 w-[320px] rounded-md bg-neutral-950 p-4">
@@ -46,75 +51,104 @@ export function WageCalculatorForm() {
       ),
     })
 
-    var x = calculateWage(data.salary, data.salaryFrequency, data.taxFreeAmount, data.personalAllowance)
-
-    console.log(x)
-
+    var calculateWageResponse = await calculateWage(data.salary, data.salaryFrequency, data.taxFreeAmount, data.personalAllowance)
+    var formatted = `Gross yearly income: ${calculateWageResponse.GrossYearlyIncome}\nWage values: \n${calculateWageResponse.Wage}`
+    setWageCalculationResponseMessage(calculateWageResponse);
   }
 
   return (
-    <Form {...form}>
+    <>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
 
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+          <FormField
+            control={form.control}
+            name="salary"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Salary</FormLabel>
+                <FormControl>
+                  <Input placeholder="30000" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name="salary"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Salary</FormLabel>
-              <FormControl>
-                <Input placeholder="30000" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+          <FormField
+            control={form.control}
+            name="salaryFrequency"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Salary Frequency</FormLabel>
+                <FormControl>
+                  <Input placeholder="Yearly" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="taxFreeAmount"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Tax Free Amount</FormLabel>
+                <FormControl>
+                  <Input placeholder="3000" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="personalAllowance"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Personal Allowance</FormLabel>
+                <FormControl>
+                  <Input placeholder="12000" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit">Submit</Button>
+        </form>
+      </Form>
+      "hi"
+      <div>
+        {addWageCalculationResponseMessage && addWageCalculationResponseMessage.GrossYearlyIncome}
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+            <tr>
+              <th scope="col" class="px-6 py-3">
+                Value
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Number Of Payments
+              </th>
+            </tr>
+          </thead>
+
+          {addWageCalculationResponseMessage && addWageCalculationResponseMessage.Wage.map(
+            x =>
+              <tbody class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                <tr>
+                  <td class="px-6 py-4">
+                    {x.Value}
+                  </td>
+                  <td class="px-6 py-4">
+                    {x.NumberOfPayments}
+                  </td>
+                </tr>
+              </tbody>
           )}
-        />
-
-        <FormField
-          control={form.control}
-          name="salaryFrequency"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Salary Frequency</FormLabel>
-              <FormControl>
-                <Input placeholder="Yearly" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="taxFreeAmount"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Tax Free Amount</FormLabel>
-              <FormControl>
-                <Input placeholder="3000" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="personalAllowance"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Personal Allowance</FormLabel>
-              <FormControl>
-                <Input placeholder="12000" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <Button type="submit">Submit</Button>
-      </form>
-    </Form>
+        </table>
+      </div>
+    </>
   )
 }

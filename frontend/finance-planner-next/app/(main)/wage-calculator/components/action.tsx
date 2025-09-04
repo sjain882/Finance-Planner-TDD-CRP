@@ -19,17 +19,16 @@ export async function calculateWage(salary: number, salaryFrequency: string, tax
             personalAllowance: personalAllowance,
         }),
     });
+
     if (response.ok) {
-        var x = await response.json()
-        console.log(x)
-        return JSON.parse(JSON.stringify(x));
+        var calculateWageResponse = await response.json()
+        console.log(calculateWageResponse)
+        return JSON.parse(JSON.stringify(calculateWageResponse));
     }
 
-    console.log("error returned add new account");
-
-    var x2 = response.text
-
-    console.log(x2)
+    console.log("Error!");
+    var errorResponse = response.text
+    console.log(errorResponse)
 
     return JSON.parse(JSON.stringify(await response.text()));
 }

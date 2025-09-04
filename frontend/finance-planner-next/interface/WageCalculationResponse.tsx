@@ -1,4 +1,6 @@
+import { RepeatedPaymentResponse } from "./RepeatedPaymentResponse"
+
 export interface WageCalculationResponse {
-    grossYearlyIncome: number
-    wage: number[]
+    GrossYearlyIncome: number
+    Wage: RepeatedPaymentResponse[]
 }
