@@ -52,8 +52,11 @@ export function WageCalculatorForm() {
     })
 
     var calculateWageResponse = await calculateWage(data.salary, data.salaryFrequency, data.taxFreeAmount, data.personalAllowance)
-    var formatted = `Gross yearly income: ${calculateWageResponse.GrossYearlyIncome}\nWage values: \n${calculateWageResponse.Wage}`
-    setWageCalculationResponseMessage(calculateWageResponse);
+    // var formatted = `Gross yearly income: ${calculateWageResponse.GrossYearlyIncome}\nWage values: \n${calculateWageResponse.Wage}`
+    console.log(calculateWageResponse)
+    console.log(calculateWageResponse.item)
+    console.log(calculateWageResponse.hasError)
+    setWageCalculationResponseMessage(calculateWageResponse.item!);
   }
 
   return (
@@ -122,13 +125,13 @@ export function WageCalculatorForm() {
       "hi"
       <div>
         {addWageCalculationResponseMessage && addWageCalculationResponseMessage.GrossYearlyIncome}
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
             <tr>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Value
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Number Of Payments
               </th>
             </tr>
@@ -136,12 +139,12 @@ export function WageCalculatorForm() {
 
           {addWageCalculationResponseMessage && addWageCalculationResponseMessage.Wage.map(
             x =>
-              <tbody class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+              <tbody className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200" key={x.Value}>
                 <tr>
-                  <td class="px-6 py-4">
+                  <td className="px-6 py-4">
                     {x.Value}
                   </td>
-                  <td class="px-6 py-4">
+                  <td className="px-6 py-4">
                     {x.NumberOfPayments}
                   </td>
                 </tr>
