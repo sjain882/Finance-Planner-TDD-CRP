@@ -1,7 +1,7 @@
 'use server'
 
-import { WageCalculationRequest } from "@/interface/WageCalculationRequest";
-import { WageCalculationResponse } from "@/interface/WageCalculationResponse";
+import { WageCalculationRequest } from "@/interface/wage";
+import { WageCalculationResponse } from "@/interface/wage";
 import WageCalculator from "../page";
 import { cidrv4 } from "zod";
 

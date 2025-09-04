@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { z } from "zod"
-import { WageCalculationRequest } from "@/interface/WageCalculationRequest";
+import { WageCalculationRequest } from "@/interface/wage";
 
 import { Button } from "@/components/ui/button"
 import {
@@ -19,7 +19,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { calculateWage } from "./action"
 import { useState } from "react"
-import { WageCalculationResponse } from "@/interface/WageCalculationResponse"
+import { WageCalculationResponse } from "@/interface/wage"
 
 const FormSchema = z.object({
   salary: z.coerce.number(),
