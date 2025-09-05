@@ -20,6 +20,15 @@ import { Input } from "@/components/ui/input"
 import { calculateWage } from "./action"
 import { useState } from "react"
 import { WageCalculationResponse } from "@/interface/wage"
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
 const FormSchema = z.object({
   salary: z.coerce.number(),
@@ -122,35 +131,25 @@ export function WageCalculatorForm() {
           <Button type="submit">Submit</Button>
         </form>
       </Form>
-      "hi"
+      
       <div>
-        {addWageCalculationResponseMessage && addWageCalculationResponseMessage.GrossYearlyIncome}
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-            <tr>
-              <th scope="col" className="px-6 py-3">
-                Value
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Number Of Payments
-              </th>
-            </tr>
-          </thead>
-
-          {addWageCalculationResponseMessage && addWageCalculationResponseMessage.Wage.map(
-            x =>
-              <tbody className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200" key={x.Value}>
-                <tr>
-                  <td className="px-6 py-4">
-                    {x.Value}
-                  </td>
-                  <td className="px-6 py-4">
-                    {x.NumberOfPayments}
-                  </td>
-                </tr>
-              </tbody>
-          )}
-        </table>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Value</TableHead>
+              <TableHead>Number Of Payments</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {addWageCalculationResponseMessage &&
+              addWageCalculationResponseMessage.Wage.map(x => (
+                <TableRow key={x.Value}>
+                  <TableCell>{x.Value}</TableCell>
+                  <TableCell>{x.NumberOfPayments}</TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
       </div>
     </>
   )
