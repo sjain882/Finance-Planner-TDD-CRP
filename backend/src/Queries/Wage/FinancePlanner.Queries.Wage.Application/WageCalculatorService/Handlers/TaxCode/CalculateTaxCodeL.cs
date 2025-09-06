@@ -36,7 +36,7 @@ public class CalculateTaxCodeL : IWageCalculator
 
         if (salary > 12570)
         {
-            var basicTaxable = Money.Min(Money.From(50270), salary) - Money.From(12570);
+            var basicTaxable = Money.Min(Money.From(50270), salary) - _personalAllowance;
             taxPaid += basicTaxable * 0.20m;
         }
 
