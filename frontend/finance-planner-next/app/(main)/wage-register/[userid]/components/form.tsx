@@ -25,6 +25,8 @@ import { useState } from "react"
 import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useQueryClient } from "@tanstack/react-query"
+import { queryKeyWages } from "@/app/data/queryKeys"
 
 const FormSchema = z.object({
   value: z.coerce.number(),
@@ -36,6 +38,9 @@ interface AddWageFormProps {
 }
 
 export function AddWageForm({ userid }: AddWageFormProps) {
+
+  const queryClient = useQueryClient();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -54,16 +59,17 @@ export function AddWageForm({ userid }: AddWageFormProps) {
      })
  
      var addWageResponse = await addWage(userid, data.value, data.datePaid);
-     
-     if (addWageResponse.hasError) {
+
+     if (addWageResponse.hasError || addWageResponse.hasFailed) {
        toast.error("Error adding wage: " + addWageResponse.errorMessage);
        return;
      }
 
-     if (addWageResponse.hasError === false && addWageResponse.hasFailed === false) {
-       toast.success("Wage added successfully");
-       form.reset();
-     }
+    toast.success("Wage added successfully");
+    form.reset();
+
+    // Update the wage table with the new entry
+    queryClient.invalidateQueries({ queryKey: [queryKeyWages] })
 
      // var formatted = `Gross yearly income: ${calculateWageResponse.GrossYearlyIncome}\nWage values: \n${calculateWageResponse.Wage}`
      console.log(addWageResponse)

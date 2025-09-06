@@ -38,8 +38,6 @@ export async function addWage(userid: number,
 
 
 export async function getAllWages(userid: number,
-                                        personalAllowance: number,
-                                        taxFreeAmount: number
                                         ): Promise<Result<WageCalculationResponse>> {
 
     const url = `${process.env.QUERY_SERVER_URL}/Wage/all/raw/${userid}`
