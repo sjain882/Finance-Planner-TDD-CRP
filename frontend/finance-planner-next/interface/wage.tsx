@@ -14,3 +14,9 @@ export interface RepeatedPaymentResponse {
     Value: number
     NumberOfPayments: number
 }
+
+export interface DayWageResponse {
+    UserID: number,
+    Value: number,
+    DatePaid: Date,
+}

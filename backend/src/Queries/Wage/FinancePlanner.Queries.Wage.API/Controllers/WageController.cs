@@ -61,7 +61,8 @@ public class WageController : ControllerBase
             ErrorDescription.InvalidSalaryFrequency)));
     }
     
-    [HttpGet("all/{userid:int}")]
+    [HttpPost]
+    [Route("all/{userid:int}")]
     public async Task<IActionResult> GetEmployeeWage(
         int userid,
         [FromQuery] decimal personalAllowance,

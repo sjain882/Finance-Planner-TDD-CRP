@@ -1,5 +1,6 @@
 "use client"
 
+import { addWage, getAllWages, getEmployeeWage } from "./action"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
@@ -44,14 +45,30 @@ export function AddWageForm({ userid }: AddWageFormProps) {
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast("You submitted the following values", {
-      description: (
-        <pre className="mt-2 w-[320px] rounded-md bg-neutral-950 p-4">
-          <code className="text-white">{JSON.stringify({ ...data, userid }, null, 2)}</code>
-        </pre>
-      ),
-    })
-    // You can call your API here, passing { ...data, userid }
+     toast("You submitted the following values", {
+       description: (
+         <pre className="mt-2 w-[320px] rounded-md bg-neutral-950 p-4">
+           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+         </pre>
+       ),
+     })
+ 
+     var addWageResponse = await addWage(userid, data.value, data.datePaid);
+     
+     if (addWageResponse.hasError) {
+       toast.error("Error adding wage: " + addWageResponse.errorMessage);
+       return;
+     }
+
+     if (addWageResponse.hasError === false && addWageResponse.hasFailed === false) {
+       toast.success("Wage added successfully");
+       form.reset();
+     }
+
+     // var formatted = `Gross yearly income: ${calculateWageResponse.GrossYearlyIncome}\nWage values: \n${calculateWageResponse.Wage}`
+     console.log(addWageResponse)
+     console.log(addWageResponse.item)
+     console.log(addWageResponse.hasError)
   }
 
   return (

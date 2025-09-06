@@ -1,6 +1,5 @@
 "use client"
 
-import { AddWageRequest } from "@/interface/transaction"
 import {
   Table,
   TableBody,
@@ -10,14 +9,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { DayWageResponse } from "@/interface/wage"
 
 interface WageTableProps {
   userid: number
 }
 
 export function WageTable({ userid }: WageTableProps) {
-  // Fetch all AddWageRequest for the user here
-  const wageData: AddWageRequest[] = []
+  
+  const wageData: DayWageResponse[] = []
 
   return (
     <div className="border rounded-lg p-6 shadow bg-white">

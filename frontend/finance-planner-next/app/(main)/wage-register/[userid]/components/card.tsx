@@ -16,7 +16,7 @@ interface WageSummaryCardProps {
 }
 
 export function WageSummaryCard({ userid }: WageSummaryCardProps) {
-  // Fetch WageCalculationResponse for the user here
+  // Get WageCalculationResponse
   const wageSummary: WageCalculationResponse | null = null
 
   return (
@@ -31,7 +31,6 @@ export function WageSummaryCard({ userid }: WageSummaryCardProps) {
         <div>
           <span className="font-semibold">Payments:</span>
           <Table>
-            <TableCaption>Summary of repeated wage payments.</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead>Value</TableHead>
