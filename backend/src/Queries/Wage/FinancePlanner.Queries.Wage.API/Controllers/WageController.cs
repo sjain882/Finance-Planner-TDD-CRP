@@ -51,6 +51,16 @@ public class WageController : ControllerBase
             ErrorDescription.InvalidSalaryFrequency)));
     }
     
+    [HttpGet]
+    [Route("all/raw/{userid:int}")]
+    public async Task<IActionResult> GetAllWagesByUser(int userid)
+    {
+        return ControllerHelper.Convert(await _wageService.GetAllWages(userid));
+
+        return ControllerHelper.Convert(ResultT<WageCalculationResponse>.Failure(Error.Validation(ErrorCode.InvalidSalaryFrequency,
+            ErrorDescription.InvalidSalaryFrequency)));
+    }
+    
     [HttpGet("all/{userid:int}")]
     public async Task<IActionResult> GetEmployeeWage(
         int userid,

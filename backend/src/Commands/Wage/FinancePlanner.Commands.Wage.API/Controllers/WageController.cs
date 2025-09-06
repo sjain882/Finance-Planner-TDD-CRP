@@ -19,8 +19,8 @@ public class WageController : ControllerBase
         _wageService = wageService;
     }
 
-    [HttpPost(Name = "calculate")]
-    public IActionResult CalculateWage(AddWageRequest addWageRequest)
+    [HttpPost(Name = "add")]
+    public IActionResult AddWage(AddWageRequest addWageRequest)
     {
         _wageService.AddWage(addWageRequest);
         return new ContentResult

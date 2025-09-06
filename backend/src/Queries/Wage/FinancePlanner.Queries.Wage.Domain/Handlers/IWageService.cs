@@ -10,5 +10,7 @@ public interface IWageService
 
     Task<ResultT<List<DayWageResponse>>> GetAllWages();
     
+    Task<ResultT<List<DayWageResponse>>> GetAllWages(int userid);
+    
     Task<ResultT<WageCalculationResponse>> GetEmployeeWage(int userid, decimal personalAllowance, decimal taxFreeAmount);
 }

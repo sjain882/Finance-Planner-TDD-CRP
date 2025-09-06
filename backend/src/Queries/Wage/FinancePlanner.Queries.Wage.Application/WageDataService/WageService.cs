@@ -31,6 +31,11 @@ public class WageService : IWageService
         return await _wageRepository.GetAllWages();
     }
     
+    public async Task<ResultT<List<DayWageResponse>>> GetAllWages(int userid)
+    {
+        return await _wageRepository.GetAllWages(userid);
+    }
+    
     public async Task<ResultT<WageCalculationResponse>> GetEmployeeWage(int userid, decimal personalAllowance, decimal taxFreeAmount)
     {
         var allDailyWages = await _wageRepository.GetEmployeeWage(userid);
