@@ -47,8 +47,12 @@ public class WageRepository : IWageRepository
                     FROM Wage
                     WHERE  userid = @userid
                     """;
+        var parameters = new List<DbParameter>()
+        {
+            new NpgsqlParameter("@userid", userid),
+        };
         
-        var x = await _databaseQuery.GetTable(query);
+        var x = await _databaseQuery.GetTable(query, parameters);
 
         List<DayWageResponse> wages = new List<DayWageResponse>();
         
