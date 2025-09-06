@@ -26,7 +26,7 @@ import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useQueryClient } from "@tanstack/react-query"
-import { queryKeyWages } from "@/app/data/queryKeys"
+import { queryKeyWageCalculation, queryKeyWages } from "@/app/data/queryKeys"
 
 const FormSchema = z.object({
   value: z.coerce.number(),
@@ -70,6 +70,7 @@ export function AddWageForm({ userid }: AddWageFormProps) {
 
     // Update the wage table with the new entry
     queryClient.invalidateQueries({ queryKey: [queryKeyWages] })
+    queryClient.invalidateQueries({ queryKey: [queryKeyWageCalculation] })
 
      // var formatted = `Gross yearly income: ${calculateWageResponse.GrossYearlyIncome}\nWage values: \n${calculateWageResponse.Wage}`
      console.log(addWageResponse)
