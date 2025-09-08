@@ -15,6 +15,7 @@ import { getAllWages } from "./action";
 import { Result } from "@/types/result";
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { format } from "date-fns"
 
 interface WageTableProps {
   userid: number
@@ -56,7 +57,13 @@ export function WageTable({ userid }: WageTableProps) {
                 {wages.length > 0 ? wages.map((w, i) => (
                   <TableRow key={i}>
                     <TableCell className="w-[220px] max-w-[220px]">{w.Value}</TableCell>
-                    <TableCell className="w-[220px] max-w-[220px]">{w.DatePaid.toString()}</TableCell>
+                    <TableCell className="w-[220px] max-w-[220px]">
+                      {/* Below is localised date */}
+                      {/* {w.DatePaid ? format(new Date(w.DatePaid), "Pp") : ""} */}
+                      {/* Below is datetime */}
+                      {/* {w.DatePaid ? format(new Date(w.DatePaid), "dd/MM/yyyy HH:mm") : ""} */}
+                      {w.DatePaid ? format(new Date(w.DatePaid), "dd/MM/yyyy") : ""}
+                    </TableCell>
                   </TableRow>
                 )) : (
                   <TableRow>

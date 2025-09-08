@@ -110,16 +110,19 @@ export function AddWageForm({ userid }: AddWageFormProps) {
                         <Button
                           variant={"outline"}
                           className={cn(
-                            "w-[240px] pl-3 text-left font-normal",
+                            "w-full pl-3 text-left font-normal",
                             !field.value && "text-muted-foreground"
                           )}
                         >
+                          {/* Below is localisted dd/mm/yyyy */}
+                          {/* {field.value ? format(field.value, "P") : <span>Pick a date</span>} */}
+                          {/* Below is in full words like September 8 2025 */}
                           {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
                           <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                         </Button>
                       </FormControl>
                     </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
+                    <PopoverContent className="w-full p-0" align="start">
                       <Calendar
                         mode="single"
                         selected={field.value}
@@ -128,6 +131,7 @@ export function AddWageForm({ userid }: AddWageFormProps) {
                           date > new Date() || date < new Date("1900-01-01")
                         }
                         captionLayout="dropdown"
+                        className="w-full"
                       />
                     </PopoverContent>
                   </Popover>
