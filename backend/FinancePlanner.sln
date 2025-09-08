@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Queries.Wage.Tests", "src\Queries\Wage\FinancePlanner.Queries.Wage.Tests\FinancePlanner.Queries.Wage.Tests.csproj", "{72162200-A210-4804-B68B-2407FFF4C725}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Wage.Queries.Tests", "src\Queries\Wage\FinancePlanner.Wage.Queries.Tests\FinancePlanner.Wage.Queries.Tests.csproj", "{72162200-A210-4804-B68B-2407FFF4C725}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
 EndProject
@@ -15,37 +15,39 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Common", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Main", "src\Shared\FinancePlanner.Main\FinancePlanner.Main.csproj", "{590F24B5-37B5-4CA3-9272-08A5F9F83442}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wage", "Wage", "{E21131A9-272C-E2D3-BEB6-1A544885B88C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queries", "Queries", "{E21131A9-272C-E2D3-BEB6-1A544885B88C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Queries.Wage.Application", "src\Queries\Wage\FinancePlanner.Queries.Wage.Application\FinancePlanner.Queries.Wage.Application.csproj", "{26138E68-EFB8-47EE-8079-86D23A07E7B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Wage.Queries.Application", "src\Queries\Wage\FinancePlanner.Wage.Queries.Application\FinancePlanner.Wage.Queries.Application.csproj", "{26138E68-EFB8-47EE-8079-86D23A07E7B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Queries.Wage.Domain", "src\Queries\Wage\FinancePlanner.Queries.Wage.Domain\FinancePlanner.Queries.Wage.Domain.csproj", "{B1967147-DDD1-4289-A3F1-8D05162BD18D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Wage.Queries.Domain", "src\Queries\Wage\FinancePlanner.Wage.Queries.Domain\FinancePlanner.Wage.Queries.Domain.csproj", "{B1967147-DDD1-4289-A3F1-8D05162BD18D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Queries.Wage.API", "src\Queries\Wage\FinancePlanner.Queries.Wage.API\FinancePlanner.Queries.Wage.API.csproj", "{8E16FB02-2811-42A1-BBB8-C3FD9D00B7E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Wage.Queries.API", "src\Queries\Wage\FinancePlanner.Wage.Queries.API\FinancePlanner.Wage.Queries.API.csproj", "{8E16FB02-2811-42A1-BBB8-C3FD9D00B7E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Queries.Common", "src\Queries\Common\FinancePlanner.Queries.Common\FinancePlanner.Queries.Common.csproj", "{DA79E079-D8C2-479F-A7F0-37DC347C8288}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Shared.Queries.Common", "src\Queries\Common\FinancePlanner.Shared.Queries.Common\FinancePlanner.Shared.Queries.Common.csproj", "{DA79E079-D8C2-479F-A7F0-37DC347C8288}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commands", "Commands", "{A9E726B3-BFCE-420C-AC7F-0CBDBE24E7EA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wage", "Wage", "{856C9F42-5577-4DD2-9613-95109E005869}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commands", "Commands", "{856C9F42-5577-4DD2-9613-95109E005869}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Commands.Wage.Application", "src\Commands\Wage\FinancePlanner.Commands.Wage.Application\FinancePlanner.Commands.Wage.Application.csproj", "{D820360D-E0C4-41C5-8531-62E427329790}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Wage.Commands.Application", "src\Commands\Wage\FinancePlanner.Wage.Commands.Application\FinancePlanner.Wage.Commands.Application.csproj", "{D820360D-E0C4-41C5-8531-62E427329790}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Commands.Wage.Domain", "src\Commands\Wage\FinancePlanner.Commands.Wage.Domain\FinancePlanner.Commands.Wage.Domain.csproj", "{F3A82B11-2233-49D6-A711-692354F2A1A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Wage.Commands.Domain", "src\Commands\Wage\FinancePlanner.Wage.Commands.Domain\FinancePlanner.Wage.Commands.Domain.csproj", "{F3A82B11-2233-49D6-A711-692354F2A1A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Commands.Wage.Repository", "src\Commands\Wage\FinancePlanner.Commands.Wage.Repository\FinancePlanner.Commands.Wage.Repository.csproj", "{E6221478-AA37-4F20-B978-198BE88ADA4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Wage.Commands.Repository", "src\Commands\Wage\FinancePlanner.Wage.Commands.Repository\FinancePlanner.Wage.Commands.Repository.csproj", "{E6221478-AA37-4F20-B978-198BE88ADA4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Commands.Wage.API", "src\Commands\Wage\FinancePlanner.Commands.Wage.API\FinancePlanner.Commands.Wage.API.csproj", "{C9A10F6D-430E-46F9-8CC9-0C979B72BCE3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Wage.Commands.API", "src\Commands\Wage\FinancePlanner.Wage.Commands.API\FinancePlanner.Wage.Commands.API.csproj", "{C9A10F6D-430E-46F9-8CC9-0C979B72BCE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Commands.Wage.DatabaseMigration", "src\Commands\Wage\FinancePlanner.Commands.Wage.DatabaseMigration\FinancePlanner.Commands.Wage.DatabaseMigration.csproj", "{3B40C092-CC15-4D5F-BBAD-457C66003F75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Wage.Commands.DatabaseMigration", "src\Commands\Wage\FinancePlanner.Wage.Commands.DatabaseMigration\FinancePlanner.Wage.Commands.DatabaseMigration.csproj", "{3B40C092-CC15-4D5F-BBAD-457C66003F75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Commands.Common", "src\Commands\Common\FinancePlanner.Commands.Common\FinancePlanner.Commands.Common.csproj", "{6F9A1CE9-DE95-410F-8B31-B50110EDEE5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Shared.Commands.Common", "src\Commands\Common\FinancePlanner.Shared.Commands.Common\FinancePlanner.Shared.Commands.Common.csproj", "{6F9A1CE9-DE95-410F-8B31-B50110EDEE5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Commands.Wage.Tests", "src\Commands\Wage\FinancePlanner.Commands.Wage.Tests\FinancePlanner.Commands.Wage.Tests.csproj", "{4C1F5587-63CB-4BBC-8274-51F526E4ED65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Wage.Commands.Tests", "src\Commands\Wage\FinancePlanner.Wage.Commands.Tests\FinancePlanner.Wage.Commands.Tests.csproj", "{4C1F5587-63CB-4BBC-8274-51F526E4ED65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Queries.Wage.Repository", "src\Queries\Wage\FinancePlanner.Queries.Wage.Repository\FinancePlanner.Queries.Wage.Repository.csproj", "{033F0747-1F02-46BD-810A-606DAD2E1EC0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Wage.Queries.Repository", "src\Queries\Wage\FinancePlanner.Wage.Queries.Repository\FinancePlanner.Wage.Queries.Repository.csproj", "{033F0747-1F02-46BD-810A-606DAD2E1EC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Queries.Wage.DatabaseMigration", "src\Queries\Wage\FinancePlanner.Queries.Wage.DatabaseMigration\FinancePlanner.Queries.Wage.DatabaseMigration.csproj", "{74FC5A8F-267E-4599-88F7-8CB274EBF52D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancePlanner.Wage.Queries.DatabaseMigration", "src\Queries\Wage\FinancePlanner.Wage.Queries.DatabaseMigration\FinancePlanner.Wage.Queries.DatabaseMigration.csproj", "{74FC5A8F-267E-4599-88F7-8CB274EBF52D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wage", "Wage", "{E8807925-642E-4B71-883A-4B031F2B29D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -254,18 +256,14 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A2985225-04B1-E9D8-08B0-BAA413BBDAE9} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{C8E42992-5E42-0C2B-DBFE-AA848D06431C} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{62F7933B-00E1-490D-923D-597C462E74D8} = {C8E42992-5E42-0C2B-DBFE-AA848D06431C}
 		{590F24B5-37B5-4CA3-9272-08A5F9F83442} = {C8E42992-5E42-0C2B-DBFE-AA848D06431C}
-		{E21131A9-272C-E2D3-BEB6-1A544885B88C} = {A2985225-04B1-E9D8-08B0-BAA413BBDAE9}
 		{26138E68-EFB8-47EE-8079-86D23A07E7B0} = {E21131A9-272C-E2D3-BEB6-1A544885B88C}
 		{B1967147-DDD1-4289-A3F1-8D05162BD18D} = {E21131A9-272C-E2D3-BEB6-1A544885B88C}
 		{72162200-A210-4804-B68B-2407FFF4C725} = {E21131A9-272C-E2D3-BEB6-1A544885B88C}
 		{8E16FB02-2811-42A1-BBB8-C3FD9D00B7E1} = {E21131A9-272C-E2D3-BEB6-1A544885B88C}
 		{DA79E079-D8C2-479F-A7F0-37DC347C8288} = {A2985225-04B1-E9D8-08B0-BAA413BBDAE9}
-		{A9E726B3-BFCE-420C-AC7F-0CBDBE24E7EA} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
-		{856C9F42-5577-4DD2-9613-95109E005869} = {A9E726B3-BFCE-420C-AC7F-0CBDBE24E7EA}
 		{D820360D-E0C4-41C5-8531-62E427329790} = {856C9F42-5577-4DD2-9613-95109E005869}
 		{F3A82B11-2233-49D6-A711-692354F2A1A3} = {856C9F42-5577-4DD2-9613-95109E005869}
 		{E6221478-AA37-4F20-B978-198BE88ADA4E} = {856C9F42-5577-4DD2-9613-95109E005869}
@@ -275,5 +273,10 @@ Global
 		{4C1F5587-63CB-4BBC-8274-51F526E4ED65} = {856C9F42-5577-4DD2-9613-95109E005869}
 		{033F0747-1F02-46BD-810A-606DAD2E1EC0} = {E21131A9-272C-E2D3-BEB6-1A544885B88C}
 		{74FC5A8F-267E-4599-88F7-8CB274EBF52D} = {E21131A9-272C-E2D3-BEB6-1A544885B88C}
+		{E8807925-642E-4B71-883A-4B031F2B29D6} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{E21131A9-272C-E2D3-BEB6-1A544885B88C} = {E8807925-642E-4B71-883A-4B031F2B29D6}
+		{856C9F42-5577-4DD2-9613-95109E005869} = {E8807925-642E-4B71-883A-4B031F2B29D6}
+		{A2985225-04B1-E9D8-08B0-BAA413BBDAE9} = {C8E42992-5E42-0C2B-DBFE-AA848D06431C}
+		{A9E726B3-BFCE-420C-AC7F-0CBDBE24E7EA} = {C8E42992-5E42-0C2B-DBFE-AA848D06431C}
 	EndGlobalSection
 EndGlobal

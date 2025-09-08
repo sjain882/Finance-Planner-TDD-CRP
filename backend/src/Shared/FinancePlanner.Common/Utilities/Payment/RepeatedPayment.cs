@@ -1,4 +1,4 @@
-﻿using MoneyTracker.Common.Utilities.MoneyUtil;
+﻿using FinancePlanner.Common.Utilities.MoneyUtil;
 
 namespace FinancePlanner.Common.Utilities.Payment;
 

@@ -1,5 +1,5 @@
-﻿using FinancePlanner.Common.Values;
-using MoneyTracker.Common.Utilities.MoneyUtil;
+﻿using FinancePlanner.Common.Utilities.MoneyUtil;
+using FinancePlanner.Common.Values;
 
 namespace FinancePlanner.Common.Helpers;
 
