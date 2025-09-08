@@ -1,6 +1,12 @@
 "use client"
 
+import { useEffect, useState } from "react"
+import { useQuery } from "@tanstack/react-query"
+import { getEmployeeWage } from "./action"
+import { queryKeyWageCalculation } from "@/app/data/queryKeys"
 import { WageCalculationResponse } from "@/interface/wage"
+import { Result } from "@/types/result"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Table,
   TableBody,
@@ -9,14 +15,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { useEffect, useState } from "react"
-import { getEmployeeWage } from "./action"
-import { queryKeyWageCalculation } from "@/app/data/queryKeys"
-import { useQuery } from "@tanstack/react-query"
-import { Result } from "@/types/result"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 interface WageSummaryCardProps {
   userid: number
@@ -46,64 +44,36 @@ export function WageSummaryCard({ userid }: WageSummaryCardProps) {
         <CardTitle>Wage Summary</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex gap-4 mb-4">
-          <div>
-            <Label htmlFor="personalAllowance" className="mb-1 block">
-              Personal Allowance
-            </Label>
-            <Input
-              id="personalAllowance"
-              type="number"
-              value={personalAllowance}
-              onChange={e => setPersonalAllowance(Number(e.target.value) || 0)}
-              min={0}
-              step={1}
-              className="w-32"
-            />
-          </div>
-          <div>
-            <Label htmlFor="taxFreeAmount" className="mb-1 block">
-              Tax Free Amount
-            </Label>
-            <Input
-              id="taxFreeAmount"
-              type="number"
-              value={taxFreeAmount}
-              onChange={e => setTaxFreeAmount(Number(e.target.value) || 0)}
-              min={0}
-              step={1}
-              className="w-32"
-            />
-          </div>
-        </div>
         <div className="mb-4">
           <span className="font-semibold">Gross Yearly Income: </span>
           {wageCalc ? wageCalc.GrossYearlyIncome : "No data"}
         </div>
         <div>
           <span className="font-semibold">Payments:</span>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Value</TableHead>
-                <TableHead>Number Of Payments</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {wageCalc && wageCalc.Wage.length > 0
-                ? wageCalc.Wage.map((w, i) => (
-                    <TableRow key={i}>
-                      <TableCell>{w.Value}</TableCell>
-                      <TableCell>{w.NumberOfPayments}</TableCell>
+          <div className="mt-2 max-h-64 overflow-x-auto overflow-y-auto rounded">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[220px] max-w-[220px]">Value</TableHead>
+                  <TableHead className="w-[220px] max-w-[220px]">Number Of Payments</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {wageCalc && wageCalc.Wage.length > 0
+                  ? wageCalc.Wage.map((w, i) => (
+                      <TableRow key={i}>
+                        <TableCell className="w-[220px] max-w-[220px]">{w.Value}</TableCell>
+                        <TableCell className="w-[220px] max-w-[220px]">{w.NumberOfPayments}</TableCell>
+                      </TableRow>
+                    ))
+                  : (
+                    <TableRow>
+                      <TableCell colSpan={2}>No data</TableCell>
                     </TableRow>
-                  ))
-                : (
-                  <TableRow>
-                    <TableCell colSpan={2}>No data</TableCell>
-                  </TableRow>
-                )}
-            </TableBody>
-          </Table>
+                  )}
+              </TableBody>
+            </Table>
+          </div>
         </div>
       </CardContent>
     </Card>

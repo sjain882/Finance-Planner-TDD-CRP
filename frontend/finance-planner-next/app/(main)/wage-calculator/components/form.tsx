@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -23,12 +22,12 @@ import { WageCalculationResponse } from "@/interface/wage"
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const FormSchema = z.object({
   salary: z.coerce.number(),
@@ -61,96 +60,123 @@ export function WageCalculatorForm() {
     })
 
     var calculateWageResponse = await calculateWage(data.salary, data.salaryFrequency, data.taxFreeAmount, data.personalAllowance)
-    // var formatted = `Gross yearly income: ${calculateWageResponse.GrossYearlyIncome}\nWage values: \n${calculateWageResponse.Wage}`
-    console.log(calculateWageResponse)
-    console.log(calculateWageResponse.item)
-    console.log(calculateWageResponse.hasError)
     setWageCalculationResponseMessage(calculateWageResponse.item!);
   }
 
+  const columnWidth = "max-w-[220px] w-[220px]"
+
   return (
-    <>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+    <div className="flex flex-row gap-8 w-full items-stretch h-full">
+      <Card className="w-full max-w-xs h-full flex flex-col flex-1">
+        <CardHeader>
+          <CardTitle>Wage Calculator</CardTitle>
+        </CardHeader>
+        <CardContent className="flex-1 flex flex-col justify-between">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full flex flex-col flex-1 h-full">
+              <FormField
+                control={form.control}
+                name="salary"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Salary</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="30000"
+                        {...field}
+                        className="w-full"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <FormField
-            control={form.control}
-            name="salary"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Salary</FormLabel>
-                <FormControl>
-                  <Input placeholder="30000" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+              <FormField
+                control={form.control}
+                name="salaryFrequency"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Salary Frequency</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Yearly"
+                        {...field}
+                        className="w-full"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <FormField
-            control={form.control}
-            name="salaryFrequency"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Salary Frequency</FormLabel>
-                <FormControl>
-                  <Input placeholder="Yearly" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+              <FormField
+                control={form.control}
+                name="taxFreeAmount"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Tax Free Amount</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="3000"
+                        {...field}
+                        className="w-full"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <FormField
-            control={form.control}
-            name="taxFreeAmount"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Tax Free Amount</FormLabel>
-                <FormControl>
-                  <Input placeholder="3000" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="personalAllowance"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Personal Allowance</FormLabel>
-                <FormControl>
-                  <Input placeholder="12000" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit">Submit</Button>
-        </form>
-      </Form>
-      
-      <div>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Value</TableHead>
-              <TableHead>Number Of Payments</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {addWageCalculationResponseMessage &&
-              addWageCalculationResponseMessage.Wage.map(x => (
-                <TableRow key={x.Value}>
-                  <TableCell>{x.Value}</TableCell>
-                  <TableCell>{x.NumberOfPayments}</TableCell>
+              <FormField
+                control={form.control}
+                name="personalAllowance"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Personal Allowance</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="12000"
+                        {...field}
+                        className="w-full"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className="flex-1" />
+              <Button type="submit">Submit</Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
+      <Card className="flex-1 h-full flex flex-col min-h-[500px]">
+        <CardHeader>
+          <CardTitle>Wage Calculation Table</CardTitle>
+        </CardHeader>
+        <CardContent className="flex-1 flex flex-col p-0">
+          <div className="overflow-auto h-full p-6 min-h-[350px] flex-1">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className={columnWidth}>Value</TableHead>
+                  <TableHead className={columnWidth}>Number Of Payments</TableHead>
                 </TableRow>
-              ))}
-          </TableBody>
-        </Table>
-      </div>
-    </>
+              </TableHeader>
+              <TableBody>
+                {addWageCalculationResponseMessage &&
+                  addWageCalculationResponseMessage.Wage.map(x => (
+                    <TableRow key={x.Value}>
+                      <TableCell className={columnWidth}>{x.Value}</TableCell>
+                      <TableCell className={columnWidth}>{x.NumberOfPayments}</TableCell>
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   )
 }
