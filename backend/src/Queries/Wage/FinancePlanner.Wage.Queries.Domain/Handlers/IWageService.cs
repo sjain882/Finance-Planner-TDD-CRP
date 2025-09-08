@@ -9,8 +9,9 @@ public interface IWageService
     ResultT<WageCalculationResponse> CalculateWage(WageCalculationRequest request);
 
     Task<ResultT<List<DayWageResponse>>> GetAllWages();
-    
+
     Task<ResultT<List<DayWageResponse>>> GetAllWages(int userid);
-    
-    Task<ResultT<WageCalculationResponse>> GetEmployeeWage(int userid, decimal personalAllowance, decimal taxFreeAmount);
+
+    Task<ResultT<WageCalculationResponse>>
+        GetEmployeeWage(int userid, decimal personalAllowance, decimal taxFreeAmount);
 }

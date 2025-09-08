@@ -9,8 +9,8 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\..\Shared\FinancePlanner.Common\FinancePlanner.Common.csproj"/>
-        <ProjectReference Include="..\FinancePlanner.Wage.Queries.Domain\FinancePlanner.Wage.Queries.Domain.csproj" />
-        <ProjectReference Include="..\FinancePlanner.Wage.Queries.Repository\FinancePlanner.Wage.Queries.Repository.csproj" />
+        <ProjectReference Include="..\FinancePlanner.Wage.Queries.Domain\FinancePlanner.Wage.Queries.Domain.csproj"/>
+        <ProjectReference Include="..\FinancePlanner.Wage.Queries.Repository\FinancePlanner.Wage.Queries.Repository.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-using DbUp;
-
-namespace FinancePlanner.Wage.Commands.DatabaseMigration;
+﻿namespace FinancePlanner.Wage.Commands.DatabaseMigration;
 
 public class Program
 {
@@ -13,5 +10,4 @@ public class Program
 
         return 0;
     }
-    
 }

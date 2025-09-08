@@ -29,31 +29,29 @@ public class WageService : IWageService
     {
         return await _wageRepository.GetAllWages();
     }
-    
+
     public async Task<ResultT<List<DayWageResponse>>> GetAllWages(int userid)
     {
         return await _wageRepository.GetAllWages(userid);
     }
-    
-    public async Task<ResultT<WageCalculationResponse>> GetEmployeeWage(int userid, decimal personalAllowance, decimal taxFreeAmount)
+
+    public async Task<ResultT<WageCalculationResponse>> GetEmployeeWage(int userid, decimal personalAllowance,
+        decimal taxFreeAmount)
     {
         var allDailyWages = await _wageRepository.GetEmployeeWage(userid);
-        
-        if (!allDailyWages.IsSuccess)
-        {
-            return allDailyWages.Error!;
-        }
+
+        if (!allDailyWages.IsSuccess) return allDailyWages.Error!;
 
         var salaryBeforeTax = Money.From(allDailyWages.Value.Sum(y => y.Value));
-        
-        var request = new WageCalculationRequest()
+
+        var request = new WageCalculationRequest
         {
             PersonalAllowance = Money.From(personalAllowance),
             Salary = salaryBeforeTax,
             SalaryFrequency = SalaryFrequency.Yearly,
             TaxFreeAmount = Money.From(taxFreeAmount)
         };
-            
+
         return _wageCalculatorService.CalculateWage(request);
     }
 }

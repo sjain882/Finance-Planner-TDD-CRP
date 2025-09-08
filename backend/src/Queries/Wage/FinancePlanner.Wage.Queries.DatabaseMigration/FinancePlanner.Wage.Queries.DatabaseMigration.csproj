@@ -8,18 +8,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="dbup-postgresql" Version="6.0.3" />
+        <PackageReference Include="dbup-postgresql" Version="6.0.3"/>
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Scripts\Seed.sql" />
-      <EmbeddedResource Include="Scripts\Seed.sql">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </EmbeddedResource>
-      <None Remove="Scripts\Migrations\1_Initial_SQL.sql" />
-      <EmbeddedResource Include="Scripts\Migrations\1_Initial_SQL.sql">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </EmbeddedResource>
+        <None Remove="Scripts\Seed.sql"/>
+        <EmbeddedResource Include="Scripts\Seed.sql">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </EmbeddedResource>
+        <None Remove="Scripts\Migrations\1_Initial_SQL.sql"/>
+        <EmbeddedResource Include="Scripts\Migrations\1_Initial_SQL.sql">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </EmbeddedResource>
     </ItemGroup>
 
 </Project>

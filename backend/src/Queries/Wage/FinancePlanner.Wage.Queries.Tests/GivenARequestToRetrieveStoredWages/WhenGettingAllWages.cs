@@ -1,9 +1,5 @@
-﻿using System.Data;
-using System.Data.Common;
-using FinancePlanner.Common.Utilities.Result;
-using FinancePlanner.Wage.Queries.Domain.Contracts.Request;
+﻿using FinancePlanner.Common.Utilities.Result;
 using FinancePlanner.Wage.Queries.DatabaseMigration;
-using FinancePlanner.Wage.Queries.Domain.Contracts.Request;
 using FinancePlanner.Wage.Queries.Domain.Contracts.Response;
 using FinancePlanner.Wage.Queries.Repository;
 using Npgsql;
@@ -13,18 +9,18 @@ namespace FinancePlanner.Wage.Queries.Tests.GivenARequestToRetrieveStoredWages;
 
 public class WhenGettingAllWages
 {
-    public PostgreSqlContainer _postgres;
     private const int UserID = 1;
     private const int Amount = 123;
-    private DateTime datePaid;
     public DatabaseQuery _databaseQuery;
+    public PostgreSqlContainer _postgres;
     private ResultT<List<DayWageResponse>> _wageListResult;
+    private DateTime datePaid;
 
     [OneTimeSetUp]
     public async Task SetUp()
     {
         datePaid = new DateTime(2025, 08, 21);
-        
+
         _postgres = new PostgreSqlBuilder()
             .WithImage("postgres:16")
             .WithCleanUp(true)
@@ -37,7 +33,7 @@ public class WhenGettingAllWages
         await Setup_SeedDatabase();
 
         _databaseQuery = new DatabaseQuery(_postgres.GetConnectionString());
-            
+
         var wageRepository = new WageRepository(_databaseQuery);
 
         _wageListResult = await wageRepository.GetAllWages();
@@ -50,9 +46,9 @@ public class WhenGettingAllWages
                     VALUES ('2011-01-26T00:00:00+00:00', 1, 20000),
                            ('2016-05-12T00:00:00+00:00', 2, 50000);
                     """;
-        
+
         await using var dataSource = NpgsqlDataSource.Create(_postgres.GetConnectionString());
-        
+
         await using (var cmd = dataSource.CreateCommand(query))
         {
             await cmd.ExecuteNonQueryAsync();
@@ -62,10 +58,7 @@ public class WhenGettingAllWages
     [OneTimeTearDown]
     public async Task TearDown()
     {
-        if (_postgres != null)
-        {
-            await _postgres.DisposeAsync();
-        }
+        if (_postgres != null) await _postgres.DisposeAsync();
     }
 
     [Test]
@@ -81,7 +74,7 @@ public class WhenGettingAllWages
         Assert.That(wageResult1.DatePaid, Is.EqualTo(DateTime.Parse("2011-01-26T00:00:00+00:00").ToUniversalTime()));
 
         Assert.That(wageResult1.UserID, Is.EqualTo(1));
-        
+
         Assert.That(wageResult1.Value, Is.EqualTo(20000));
 
 
@@ -89,7 +82,7 @@ public class WhenGettingAllWages
         Assert.That(valueResult2.DatePaid, Is.EqualTo(DateTime.Parse("2016-05-12T00:00:00+00:00").ToUniversalTime()));
 
         Assert.That(valueResult2.UserID, Is.EqualTo(2));
-        
+
         Assert.That(valueResult2.Value, Is.EqualTo(50000));
     }
 }

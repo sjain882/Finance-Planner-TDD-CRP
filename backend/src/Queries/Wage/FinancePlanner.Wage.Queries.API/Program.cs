@@ -1,7 +1,5 @@
 using FinancePlanner.Common.Utilities.DateTimeUtil;
-using FinancePlanner.Wage.Queries.Application;
 using FinancePlanner.Wage.Queries.Application.WageCalculatorService;
-using FinancePlanner.Wage.Queries.Application.WageCalculatorService.Handlers;
 using FinancePlanner.Wage.Queries.Application.WageDataService;
 using FinancePlanner.Wage.Queries.Domain.Handlers;
 using FinancePlanner.Wage.Queries.Repository;
@@ -55,7 +53,8 @@ public class Program
         builder.Services.AddSingleton<IWageService, WageService>();
         builder.Services.AddSingleton<IWageCalculatorService, WageCalculator>();
         builder.Services.AddSingleton<IWageRepository, WageRepository>();
-        builder.Services.AddSingleton<IDatabaseQuery>(new DatabaseQuery("User ID=root;Password=root;Host=postgres-master;Port=5432;Database=root;"));
+        builder.Services.AddSingleton<IDatabaseQuery>(
+            new DatabaseQuery("User ID=root;Password=root;Host=postgres-master;Port=5432;Database=root;"));
 
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         // builder.Services.AddOpenApi();

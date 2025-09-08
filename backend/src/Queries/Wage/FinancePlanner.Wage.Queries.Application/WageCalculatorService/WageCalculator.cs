@@ -6,7 +6,6 @@ using FinancePlanner.Common.Values;
 using FinancePlanner.Wage.Queries.Application.WageCalculatorService.Handlers;
 using FinancePlanner.Wage.Queries.Application.WageCalculatorService.Handlers.TaxCode;
 using FinancePlanner.Wage.Queries.Domain.Contracts.Response;
-using FinancePlanner.Wage.Queries.Domain.Handlers;
 
 namespace FinancePlanner.Wage.Queries.Application.WageCalculatorService;
 
@@ -35,7 +34,7 @@ public class WageCalculator : IWageCalculatorService
         var wageResult = wageCalculator.CalculateYearlyWage(calculationRequest.Salary);
 
         var yearlyIncome = (wageResult.YearlySalary - wageResult.TaxedAmount).Amount;
-        
+
         var firstMonth = Math.Round(yearlyIncome / 12, 2);
 
         var firstElevenMonths = firstMonth * 11;
@@ -43,27 +42,23 @@ public class WageCalculator : IWageCalculatorService
         var finalMonth = yearlyIncome - firstElevenMonths;
 
         List<RepeatedPaymentResponse> repeatedPayments;
-        
+
         // This needs to be tested manually!
         if (finalMonth == firstMonth)
-        {
             repeatedPayments = new List<RepeatedPaymentResponse>
             {
                 new(firstMonth, 12)
             };
-        }
         else
-        {
             repeatedPayments = new List<RepeatedPaymentResponse>
             {
                 new(firstElevenMonths, 11),
                 new(finalMonth, 1)
             };
-        }
 
         return new WageCalculationResponse
         {
-            GrossYearlyIncome = (decimal)wageResult.YearlySalary.Amount,
+            GrossYearlyIncome = wageResult.YearlySalary.Amount,
             Wage = repeatedPayments
         };
 

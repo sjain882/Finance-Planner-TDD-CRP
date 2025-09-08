@@ -12,11 +12,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\Queries\Wage\FinancePlanner.Wage.Queries.Domain\FinancePlanner.Wage.Queries.Domain.csproj" />
+        <ProjectReference Include="..\..\..\Queries\Wage\FinancePlanner.Wage.Queries.Domain\FinancePlanner.Wage.Queries.Domain.csproj"/>
         <ProjectReference Include="..\..\..\Shared\FinancePlanner.Common\FinancePlanner.Common.csproj"/>
-        <ProjectReference Include="..\..\Common\FinancePlanner.Shared.Commands.Common\FinancePlanner.Shared.Commands.Common.csproj" />
-        <ProjectReference Include="..\FinancePlanner.Wage.Commands.Application\FinancePlanner.Wage.Commands.Application.csproj" />
-        <ProjectReference Include="..\FinancePlanner.Wage.Commands.DatabaseMigration\FinancePlanner.Wage.Commands.DatabaseMigration.csproj" />
+        <ProjectReference Include="..\..\Common\FinancePlanner.Shared.Commands.Common\FinancePlanner.Shared.Commands.Common.csproj"/>
+        <ProjectReference Include="..\FinancePlanner.Wage.Commands.Application\FinancePlanner.Wage.Commands.Application.csproj"/>
+        <ProjectReference Include="..\FinancePlanner.Wage.Commands.DatabaseMigration\FinancePlanner.Wage.Commands.DatabaseMigration.csproj"/>
     </ItemGroup>
 
 </Project>

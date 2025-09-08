@@ -28,6 +28,6 @@ public class WageController : ControllerBase
 
 
         // return ControllerHelper.Convert(ResultT<WageCalculationResponse>.Failure(Error.Validation(ErrorCode.InvalidSalaryFrequency,
-            // ErrorDescription.InvalidSalaryFrequency)));
+        // ErrorDescription.InvalidSalaryFrequency)));
     }
 }

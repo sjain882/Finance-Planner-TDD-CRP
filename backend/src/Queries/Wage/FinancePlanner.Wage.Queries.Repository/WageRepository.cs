@@ -8,38 +8,38 @@ namespace FinancePlanner.Wage.Queries.Repository;
 
 public class WageRepository : IWageRepository
 {
+    public const string connectionString =
+        "User ID=root;Password=root;Host=postgres-master;Port=5432;DatabaseQuery=root;";
+
     private readonly IDatabaseQuery _databaseQuery;
-    public const string connectionString = "User ID=root;Password=root;Host=postgres-master;Port=5432;DatabaseQuery=root;";
-    
+
     public WageRepository(IDatabaseQuery databaseQuery)
     {
         _databaseQuery = databaseQuery;
     }
-    
+
     public async Task<ResultT<List<DayWageResponse>>> GetAllWages()
     {
         var query = """
                     SELECT datepaid, userid, value
                     FROM Wage
                     """;
-        
+
         var x = await _databaseQuery.GetTable(query);
 
-        List<DayWageResponse> wages = new List<DayWageResponse>();
-        
+        var wages = new List<DayWageResponse>();
+
         foreach (DataRow row in x.Rows)
-        {
             wages.Add(new DayWageResponse
             {
                 DatePaid = row.Field<DateTime>("datepaid"),
-                UserID   = row.Field<int>("userid"),
-                Value    = row.Field<decimal>("value")
+                UserID = row.Field<int>("userid"),
+                Value = row.Field<decimal>("value")
             });
-        }
 
         return wages;
     }
-    
+
     public async Task<ResultT<List<DayWageResponse>>> GetAllWages(int userid)
     {
         var query = """
@@ -47,24 +47,22 @@ public class WageRepository : IWageRepository
                     FROM Wage
                     WHERE  userid = @userid
                     """;
-        var parameters = new List<DbParameter>()
+        var parameters = new List<DbParameter>
         {
-            new NpgsqlParameter("@userid", userid),
+            new NpgsqlParameter("@userid", userid)
         };
-        
+
         var x = await _databaseQuery.GetTable(query, parameters);
 
-        List<DayWageResponse> wages = new List<DayWageResponse>();
-        
+        var wages = new List<DayWageResponse>();
+
         foreach (DataRow row in x.Rows)
-        {
             wages.Add(new DayWageResponse
             {
                 DatePaid = row.Field<DateTime>("datepaid"),
-                UserID   = row.Field<int>("userid"),
-                Value    = row.Field<decimal>("value")
+                UserID = row.Field<int>("userid"),
+                Value = row.Field<decimal>("value")
             });
-        }
 
         return wages;
     }
@@ -76,25 +74,23 @@ public class WageRepository : IWageRepository
                     FROM Wage
                     WHERE userid = @userid
                     """;
-        
-        var parameters = new List<DbParameter>()
+
+        var parameters = new List<DbParameter>
         {
-            new NpgsqlParameter("@userid", userid),
+            new NpgsqlParameter("@userid", userid)
         };
-        
+
         var x = await _databaseQuery.GetTable(query, parameters);
-        
-        List<DayWageResponse> wages = new List<DayWageResponse>();
-        
+
+        var wages = new List<DayWageResponse>();
+
         foreach (DataRow row in x.Rows)
-        {
             wages.Add(new DayWageResponse
             {
                 DatePaid = row.Field<DateTime>("datepaid"),
-                UserID   = row.Field<int>("userid"),
-                Value    = row.Field<decimal>("value")
+                UserID = row.Field<int>("userid"),
+                Value = row.Field<decimal>("value")
             });
-        }
 
         return wages;
     }

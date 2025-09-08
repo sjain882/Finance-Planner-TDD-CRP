@@ -8,17 +8,17 @@ namespace FinancePlanner.Wage.Commands.Tests.GivenAWageToStoreInDatabase;
 
 public class WhenAddingAValidWage
 {
-    public PostgreSqlContainer _postgres;
     private const int UserID = 1;
     private const int Amount = 123;
-    private DateTime datePaid;
+    public PostgreSqlContainer _postgres;
     public DatabaseQuery databaseQuery;
-    
+    private DateTime datePaid;
+
     [OneTimeSetUp]
     public async Task SetUp()
     {
         datePaid = new DateTime(2025, 08, 21);
-        
+
         _postgres = new PostgreSqlBuilder()
             .WithImage("postgres:16")
             .WithCleanUp(true)
@@ -27,12 +27,12 @@ public class WhenAddingAValidWage
         await _postgres.StartAsync();
 
         Migration.CheckMigration(_postgres.GetConnectionString());
-        
+
         databaseQuery = new DatabaseQuery(_postgres.GetConnectionString());
 
         var wageRepository = new WageRepository(databaseQuery);
 
-        var addWageRequest = new AddWageRequest()
+        var addWageRequest = new AddWageRequest
         {
             UserID = UserID,
             Value = Amount,
@@ -45,10 +45,7 @@ public class WhenAddingAValidWage
     [OneTimeTearDown]
     public async Task TearDown()
     {
-        if (_postgres != null)
-        {
-            await _postgres.DisposeAsync();
-        }
+        if (_postgres != null) await _postgres.DisposeAsync();
     }
 
     [Test]

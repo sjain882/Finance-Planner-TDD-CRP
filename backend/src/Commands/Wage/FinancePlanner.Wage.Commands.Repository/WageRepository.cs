@@ -6,14 +6,16 @@ namespace FinancePlanner.Wage.Commands.Repository;
 
 public class WageRepository : IWageRepository
 {
+    public const string connectionString =
+        "User ID=root;Password=root;Host=postgres-master;Port=5432;DatabaseQuery=root;";
+
     private readonly IDatabaseQuery _databaseQuery;
-    public const string connectionString = "User ID=root;Password=root;Host=postgres-master;Port=5432;DatabaseQuery=root;";
-    
+
     public WageRepository(IDatabaseQuery databaseQuery)
     {
         _databaseQuery = databaseQuery;
     }
-    
+
     public async Task AddWage(AddWageRequest addWageRequest)
     {
         var query = """
@@ -21,14 +23,14 @@ public class WageRepository : IWageRepository
                     VALUES (@datepaid, @userid, @value);
                     """;
 
-        var parameters = new List<DbParameter>()
+        var parameters = new List<DbParameter>
         {
             // new NpgsqlParameter("@id", 1),
             new NpgsqlParameter("@datepaid", addWageRequest.DatePaid),
             new NpgsqlParameter("@userid", addWageRequest.UserID),
             new NpgsqlParameter("@value", addWageRequest.Value)
         };
-        
+
         await _databaseQuery.UpdateTable(query, parameters);
     }
 
@@ -40,10 +42,7 @@ public class WageRepository : IWageRepository
         await using (var cmd = dataSource.CreateCommand("SELECT some_field FROM data"))
         await using (var reader = await cmd.ExecuteReaderAsync())
         {
-            while (await reader.ReadAsync())
-            {
-                Console.WriteLine(reader.GetString(0));
-            }
+            while (await reader.ReadAsync()) Console.WriteLine(reader.GetString(0));
         }
     }
 }
