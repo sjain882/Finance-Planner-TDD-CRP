@@ -36,4 +36,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/app ./
 EXPOSE 8080
-ENTRYPOINT ["dotnet", "FinancePlanner.Queries.Wage.API.dll"]
+ENTRYPOINT ["dotnet", "FinancePlanner.Wage.Queries.API.dll"]

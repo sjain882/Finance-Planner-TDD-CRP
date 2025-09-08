@@ -1,6 +1,4 @@
-﻿using MoneyTracker.Common.Utilities.MoneyUtil;
-
-namespace FinancePlanner.Common.Utilities.Payment;
+﻿namespace FinancePlanner.Common.Utilities.Payment;
 
 public class RepeatedPaymentResponse(decimal value, int numberOfPayments)
 {

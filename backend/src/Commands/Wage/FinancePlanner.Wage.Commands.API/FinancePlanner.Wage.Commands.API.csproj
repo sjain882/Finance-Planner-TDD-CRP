@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.8"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Queries\Wage\FinancePlanner.Wage.Queries.Domain\FinancePlanner.Wage.Queries.Domain.csproj" />
+        <ProjectReference Include="..\..\..\Shared\FinancePlanner.Common\FinancePlanner.Common.csproj"/>
+        <ProjectReference Include="..\..\Common\FinancePlanner.Shared.Commands.Common\FinancePlanner.Shared.Commands.Common.csproj" />
+        <ProjectReference Include="..\FinancePlanner.Wage.Commands.Application\FinancePlanner.Wage.Commands.Application.csproj" />
+        <ProjectReference Include="..\FinancePlanner.Wage.Commands.DatabaseMigration\FinancePlanner.Wage.Commands.DatabaseMigration.csproj" />
+    </ItemGroup>
+
+</Project>

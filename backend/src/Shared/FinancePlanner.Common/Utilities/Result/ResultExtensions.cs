@@ -1,4 +1,4 @@
-namespace FinancePlanner.Shared.Common.Result;
+namespace FinancePlanner.Common.Utilities.Result;
 
 public static class ResultExtensions
 {

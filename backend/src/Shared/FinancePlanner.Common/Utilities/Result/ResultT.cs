@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace FinancePlanner.Shared.Common.Result;
+namespace FinancePlanner.Common.Utilities.Result;
 
 public sealed class ResultT<TValue> : Result
 {

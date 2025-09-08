@@ -1,4 +1,4 @@
-namespace MoneyTracker.Common.Utilities.MoneyUtil;
+namespace FinancePlanner.Common.Utilities.MoneyUtil;
 
 public class Money
 {

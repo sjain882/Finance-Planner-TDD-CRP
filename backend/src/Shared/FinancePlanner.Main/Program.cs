@@ -1,9 +1,9 @@
 ﻿using FinancePlanner.Common.Helpers;
 using FinancePlanner.Common.Utilities.DateTimeUtil;
+using FinancePlanner.Common.Utilities.MoneyUtil;
 using FinancePlanner.Common.Values;
-using FinancePlanner.Queries.Wage.Application;
-using FinancePlanner.Queries.Wage.Application.WageCalculatorService;
-using MoneyTracker.Common.Utilities.MoneyUtil;
+using FinancePlanner.Wage.Queries.Application;
+using FinancePlanner.Wage.Queries.Application.WageCalculatorService;
 
 namespace FinancePlanner.Main;
 

@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace FinancePlanner.Shared.Common.Result;
+namespace FinancePlanner.Common.Utilities.Result;
 
 public class Result
 {
