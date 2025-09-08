@@ -25,7 +25,7 @@ public class WageController : ControllerBase
     public IActionResult CalculateWage(WageCalculationRequest wageCalculationRequest)
     {
         var salaryFrequencySuccess =
-            Enum.TryParse<SalaryFrequency>(wageCalculationRequest.SalaryFrequency, out var salaryFrequency);
+            Enum.TryParse<SalaryFrequency>(wageCalculationRequest.SalaryFrequency, true, out var salaryFrequency);
 
         if (salaryFrequencySuccess)
             return ControllerHelper.Convert(_wageService.CalculateWage(
@@ -51,7 +51,18 @@ public class WageController : ControllerBase
             ErrorDescription.InvalidSalaryFrequency)));
     }
     
-    [HttpGet("all/{userid:int}")]
+    [HttpGet]
+    [Route("all/raw/{userid:int}")]
+    public async Task<IActionResult> GetAllWagesByUser(int userid)
+    {
+        return ControllerHelper.Convert(await _wageService.GetAllWages(userid));
+
+        return ControllerHelper.Convert(ResultT<WageCalculationResponse>.Failure(Error.Validation(ErrorCode.InvalidSalaryFrequency,
+            ErrorDescription.InvalidSalaryFrequency)));
+    }
+    
+    [HttpPost]
+    [Route("all/{userid:int}")]
     public async Task<IActionResult> GetEmployeeWage(
         int userid,
         [FromQuery] decimal personalAllowance,

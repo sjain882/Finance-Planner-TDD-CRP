@@ -39,6 +39,35 @@ public class WageRepository : IWageRepository
 
         return wages;
     }
+    
+    public async Task<ResultT<List<DayWageResponse>>> GetAllWages(int userid)
+    {
+        var query = """
+                    SELECT datepaid, userid, value
+                    FROM Wage
+                    WHERE  userid = @userid
+                    """;
+        var parameters = new List<DbParameter>()
+        {
+            new NpgsqlParameter("@userid", userid),
+        };
+        
+        var x = await _databaseQuery.GetTable(query, parameters);
+
+        List<DayWageResponse> wages = new List<DayWageResponse>();
+        
+        foreach (DataRow row in x.Rows)
+        {
+            wages.Add(new DayWageResponse
+            {
+                DatePaid = row.Field<DateTime>("datepaid"),
+                UserID   = row.Field<int>("userid"),
+                Value    = row.Field<decimal>("value")
+            });
+        }
+
+        return wages;
+    }
 
     public async Task<ResultT<List<DayWageResponse>>> GetEmployeeWage(int userid)
     {

@@ -35,17 +35,36 @@ public class WageCalculator : IWageCalculatorService
 
         var wageResult = wageCalculator.CalculateYearlyWage(calculationRequest.Salary);
 
-        var yearlyIncome = wageResult.YearlySalary - wageResult.TaxedAmount;
-        var monthlyIncome = yearlyIncome / 12;
+        var yearlyIncome = (wageResult.YearlySalary - wageResult.TaxedAmount).Amount;
+        
+        var firstMonth = Math.Round(yearlyIncome / 12, 2);
 
-        var repeatedPayments = new List<RepeatedPayment>
+        var firstElevenMonths = firstMonth * 11;
+
+        var finalMonth = yearlyIncome - firstElevenMonths;
+
+        List<RepeatedPaymentResponse> repeatedPayments;
+        
+        // This needs to be tested manually!
+        if (finalMonth == firstMonth)
         {
-            new(monthlyIncome, 12)
-        };
+            repeatedPayments = new List<RepeatedPaymentResponse>
+            {
+                new(firstMonth, 12)
+            };
+        }
+        else
+        {
+            repeatedPayments = new List<RepeatedPaymentResponse>
+            {
+                new(firstElevenMonths, 11),
+                new(finalMonth, 1)
+            };
+        }
 
         return new WageCalculationResponse
         {
-            GrossYearlyIncome = wageResult.YearlySalary,
+            GrossYearlyIncome = (decimal)wageResult.YearlySalary.Amount,
             Wage = repeatedPayments
         };
 

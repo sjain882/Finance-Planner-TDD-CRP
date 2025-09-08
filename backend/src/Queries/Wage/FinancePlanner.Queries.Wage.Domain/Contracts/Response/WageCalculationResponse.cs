@@ -5,6 +5,6 @@ namespace FinancePlanner.Queries.Wage.Domain.Contracts.Response;
 
 public class WageCalculationResponse
 {
-    public Money GrossYearlyIncome { get; set; }
-    public List<RepeatedPayment> Wage { get; set; }
+    public decimal GrossYearlyIncome { get; set; }
+    public List<RepeatedPaymentResponse> Wage { get; set; } = Enumerable.Empty<RepeatedPaymentResponse>().ToList();
 }
