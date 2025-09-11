@@ -2,8 +2,6 @@
 
 Payroll system for businesses that allows tracking of wages and automatic calculation of gross incomes according to relevant tax codes.
 
-‎
-‎
 ## 🧰 Technologies used
 
 ### Backend
@@ -30,6 +28,7 @@ Payroll system for businesses that allows tracking of wages and automatic calcul
 - Database Management: [pgAdmin 4](https://www.pgadmin.org/)
 - Testing API endpoints: [Insomnia](https://insomnia.rest/), [Swagger](https://swagger.io/)
 - Frontend development subsystem: [WSL](https://learn.microsoft.com/en-us/windows/wsl/about)
+- Planning: [Github Projects Kanban](https://github.com/users/sjain882/projects/1)
 
 ‎
 ‎
