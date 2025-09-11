@@ -35,7 +35,7 @@ Payroll system for businesses that allows tracking of wages and automatic calcul
 ## 📚 Architectures & patterns
 I use this project to learn & implement various design patterns to ensure my work remains performant, maintainable and scalable.
 
-Currently, the root level uses [Command Query Responsibility Segregation (CQRS)](https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs) and sub-services (e.g, `./src/[Commands|Queries]/Wage`) use [Controller Service Repository (CSR)](https://www.youtube.com/watch?v=8fFBWmbUaIg), to ensure good separation of logic.
+Currently, the root level uses [Controller Service Repository (CSR)](https://www.youtube.com/watch?v=8fFBWmbUaIg) and sub-services (e.g, `./src/[Commands|Queries]/Wage`) use [Command Query Responsibility Segregation (CQRS)](https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs), to ensure good separation of logic.
 
 Despite this, each service is fully self-contained, meaning they can adhere to any pattern (e.g, another one could be a Modular Monolith).
 
