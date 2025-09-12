@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>FinancePlanner.Wage.Queries.API</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.8"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Shared\FinancePlanner.Shared.Common\FinancePlanner.Shared.Common.csproj" />
+      <ProjectReference Include="..\..\..\Shared\Queries\FinancePlanner.Shared.Queries.Common\FinancePlanner.Shared.Queries.Common.csproj" />
+      <ProjectReference Include="..\FinancePlanner.Wage.Queries.Application\FinancePlanner.Wage.Queries.Application.csproj" />
+      <ProjectReference Include="..\FinancePlanner.Wage.Queries.Domain\FinancePlanner.Wage.Queries.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

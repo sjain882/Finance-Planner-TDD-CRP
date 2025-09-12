@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>FinancePlanner.Wage.Commands.Application</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FinancePlanner.Wage.Commands.Domain\FinancePlanner.Wage.Commands.Domain.csproj" />
+      <ProjectReference Include="..\FinancePlanner.Wage.Commands.Repository\FinancePlanner.Wage.Commands.Repository.csproj" />
+    </ItemGroup>
+
+</Project>

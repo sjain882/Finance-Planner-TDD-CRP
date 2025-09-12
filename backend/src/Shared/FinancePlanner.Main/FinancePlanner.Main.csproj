@@ -8,8 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Queries\Wage\FinancePlanner.Wage.Queries.Application\FinancePlanner.Wage.Queries.Application.csproj"/>
-        <ProjectReference Include="..\FinancePlanner.Common\FinancePlanner.Common.csproj"/>
+      <ProjectReference Include="..\..\Wage\Queries\FinancePlanner.Wage.Queries.Application\FinancePlanner.Wage.Queries.Application.csproj" />
+      <ProjectReference Include="..\FinancePlanner.Shared.Common\FinancePlanner.Shared.Common.csproj" />
     </ItemGroup>
 
 </Project>
