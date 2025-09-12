@@ -3,12 +3,10 @@ WORKDIR /App
 
 COPY ./*.sln .
 # Copy and move packages to their directories
-COPY ./src/Commands/*/*.csproj .
-RUN for file in $(ls *.csproj); do mkdir -p src/Shared/${file%.*}/ && mv $file src/Shared/${file%.*}/; done
-COPY ./src/Queries/*/*.csproj .
-RUN for file in $(ls *.csproj); do mkdir -p src/Commands/${file%.*}/ && mv $file src/Commands/${file%.*}/; done
 COPY ./src/Shared/*/*.csproj .
-RUN for file in $(ls *.csproj); do mkdir -p src/Queries/${file%.*}/ && mv $file src/Queries/${file%.*}/; done
+RUN for file in $(ls *.csproj); do mkdir -p src/Shared/${file%.*}/ && mv $file src/Shared/${file%.*}/; done
+COPY ./src/Wage/*/*.csproj .
+RUN for file in $(ls *.csproj); do mkdir -p src/Wage/${file%.*}/ && mv $file src/Wage/${file%.*}/; done
 # Restore as distinct layers
 RUN dotnet restore 
 # Copy everything else
