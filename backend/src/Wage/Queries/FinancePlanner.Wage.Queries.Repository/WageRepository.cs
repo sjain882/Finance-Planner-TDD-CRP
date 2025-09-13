@@ -8,9 +8,6 @@ namespace FinancePlanner.Wage.Queries.Repository;
 
 public class WageRepository : IWageRepository
 {
-    public const string connectionString =
-        "User ID=root;Password=root;Host=postgres-master;Port=5432;DatabaseQuery=root;";
-
     private readonly IDatabaseQuery _databaseQuery;
 
     public WageRepository(IDatabaseQuery databaseQuery)

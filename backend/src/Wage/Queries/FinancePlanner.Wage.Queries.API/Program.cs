@@ -53,8 +53,14 @@ public class Program
         builder.Services.AddSingleton<IWageService, WageService>();
         builder.Services.AddSingleton<IWageCalculatorService, WageCalculator>();
         builder.Services.AddSingleton<IWageRepository, WageRepository>();
+        
+        var connectionString = builder.Configuration["Database:Wage"];
+        if (connectionString is null)
+        {
+            throw new NullReferenceException("Database connection string is null");
+        }
         builder.Services.AddSingleton<IDatabaseQuery>(
-            new DatabaseQuery("User ID=root;Password=root;Host=postgres-master;Port=5432;Database=root;"));
+            new DatabaseQuery(connectionString));
 
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         // builder.Services.AddOpenApi();

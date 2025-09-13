@@ -11,6 +11,7 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        
 
         // Add services to the container.
 
@@ -54,8 +55,15 @@ public class Program
 
 
         builder.Services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+        
+        var connectionString = builder.Configuration["Database:Wage"];
+        if (connectionString is null)
+        {
+            throw new NullReferenceException("Database connection string is null");
+        }
         builder.Services.AddSingleton<IDatabaseQuery>(
-            new DatabaseQuery("User ID=root;Password=root;Host=postgres-master;Port=5432;Database=root;"));
+            new DatabaseQuery(connectionString));
+        
         builder.Services.AddSingleton<IWageRepository, WageRepository>();
         builder.Services.AddSingleton<IWageService, WageService>();
 

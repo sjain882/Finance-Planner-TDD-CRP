@@ -10,6 +10,8 @@
     <ItemGroup>
         <PackageReference Include="dbup" Version="5.0.41"/>
         <PackageReference Include="dbup-postgresql" Version="6.0.3"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.3" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.3" />
         <PackageReference Include="Npgsql" Version="9.0.3"/>
     </ItemGroup>
 

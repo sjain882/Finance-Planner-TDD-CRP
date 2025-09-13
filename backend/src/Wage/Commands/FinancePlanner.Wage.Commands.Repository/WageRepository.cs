@@ -6,9 +6,6 @@ namespace FinancePlanner.Wage.Commands.Repository;
 
 public class WageRepository : IWageRepository
 {
-    public const string connectionString =
-        "User ID=root;Password=root;Host=postgres-master;Port=5432;DatabaseQuery=root;";
-
     private readonly IDatabaseQuery _databaseQuery;
 
     public WageRepository(IDatabaseQuery databaseQuery)
@@ -32,17 +29,5 @@ public class WageRepository : IWageRepository
         };
 
         await _databaseQuery.UpdateTable(query, parameters);
-    }
-
-    public async Task RetrieveAll()
-    {
-        await using var dataSource = NpgsqlDataSource.Create(connectionString);
-
-        // Retrieve all rows
-        await using (var cmd = dataSource.CreateCommand("SELECT some_field FROM data"))
-        await using (var reader = await cmd.ExecuteReaderAsync())
-        {
-            while (await reader.ReadAsync()) Console.WriteLine(reader.GetString(0));
-        }
     }
 }
