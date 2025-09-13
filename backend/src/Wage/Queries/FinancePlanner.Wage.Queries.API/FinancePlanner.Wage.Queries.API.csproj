@@ -14,7 +14,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Shared\FinancePlanner.Shared.Common\FinancePlanner.Shared.Common.csproj" />
-      <ProjectReference Include="..\..\..\Shared\Queries\FinancePlanner.Shared.Queries.Common\FinancePlanner.Shared.Queries.Common.csproj" />
       <ProjectReference Include="..\FinancePlanner.Wage.Queries.Application\FinancePlanner.Wage.Queries.Application.csproj" />
       <ProjectReference Include="..\FinancePlanner.Wage.Queries.Domain\FinancePlanner.Wage.Queries.Domain.csproj" />
     </ItemGroup>

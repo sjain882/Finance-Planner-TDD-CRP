@@ -4,7 +4,7 @@ using FinancePlanner.Shared.Common.Utilities.Result;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FinancePlanner.Shared.Queries.Common.Helpers;
+namespace FinancePlanner.Shared.Common.Helpers;
 
 [ExcludeFromCodeCoverage]
 public class ControllerHelper

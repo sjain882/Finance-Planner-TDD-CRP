@@ -25,9 +25,5 @@ public class WageController : ControllerBase
             ContentType = "text/plain",
             StatusCode = StatusCodes.Status200OK
         };
-
-
-        // return ControllerHelper.Convert(ResultT<WageCalculationResponse>.Failure(Error.Validation(ErrorCode.InvalidSalaryFrequency,
-        // ErrorDescription.InvalidSalaryFrequency)));
     }
 }
