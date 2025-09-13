@@ -35,17 +35,15 @@ Payroll system for businesses that allows tracking of wages and automatic calcul
 ## 📚 Architectures & patterns
 I use this project to learn & implement various design patterns to ensure my work remains performant, maintainable and scalable.
 
-Currently, the root level uses [Controller Service Repository (CSR)](https://www.youtube.com/watch?v=8fFBWmbUaIg) and sub-services (e.g, `./src/[Commands|Queries]/Wage`) use [Command Query Responsibility Segregation (CQRS)](https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs), to ensure good separation of logic.
+The project is set up to be split into multiple services, with each one representing a bounded context. The Wage service uses [Command Query Responsibility Segregation (CQRS)](https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs), with each model (i.e, Command/Query) being cleanly split using the layered architecture of [Controller Service Repository (CSR)](https://tom-collings.medium.com/controller-service-repository-16e29a4684e5).
 
-Despite this, each service is fully self-contained, meaning they can adhere to any pattern (e.g, another one could be a Modular Monolith).
+The core backend code (`FinancePlanner.Wage.Queries.Application`) uses [Chain of Responsibility (CoR)](https://refactoring.guru/design-patterns/chain-of-responsibility), which divides logic into modular blocks that can be included or excluded as required throughout the codebase, allowing for easier testing.
 
-The core backend code (`FinancePlanner.Wage.Queries.Application`) uses [Chain of Responsibility (CoR)](https://refactoring.guru/design-patterns/chain-of-responsibility), which divides logic into modular blocks that can be included or excluded as required throughout the codebase, minimising code duplication.
+The Wage Calculation feature of this project was the most suitable use for this pattern, as each employee's wage warrants different [tax codes](https://www.gov.uk/tax-codes/what-your-tax-code-means), but never all of them simultaneously. This requires the ability to "pick" tax code handlers (`FinancePlanner.Wage.Queries.Application.WageCalculatorService.Handlers[.TaxCode]`), which is what CoR is designed for.
 
-The Wage Calculation feature of this project was the most suitable use for this pattern, as each employee's wage warrants different [tax codes](https://www.gov.uk/tax-codes/what-your-tax-code-means), but never all of them simultaneously. This requires the ability to "mix and match" tax code handlers (`FinancePlanner.Wage.Queries.Application.WageCalculatorService.Handlers[.TaxCode]`), which is exactly what CoR is designed for.
+Usage of the [Result pattern](https://medium.com/@aseem2372005/the-result-pattern-in-c-a-smarter-way-to-handle-errors-c6dee28a0ef0) ensures that performance-intensive exception handling is reserved for fatal errors, rather than simple API response codes.
 
-Usage of the [Result pattern](https://medium.com/@aseem2372005/the-result-pattern-in-c-a-smarter-way-to-handle-errors-c6dee28a0ef0) ensures that performance-intensive exception handling is only used for fatal errors, rather than simple API response codes.
-
-Finally, I adhere to [Test Driven Development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development) and [Behaviour Driven Development (BDD)](https://en.wikipedia.org/wiki/Behavior-driven_development) throughout the project, to ensure my code remains accurate and independently organised from its implementation details. The latter can be largely observed in the directory structure & filenames of all tests.
+Finally, I leverage [Test Driven Development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development) using [Behaviour Driven Development (BDD)](https://en.wikipedia.org/wiki/Behavior-driven_development) throughout the project, to ensure my code remains high quality and independently organised from its implementation details. The latter can be largely observed in the directory structure & filenames of all tests.
 
 ‎
 ‎
