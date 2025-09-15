@@ -35,7 +35,7 @@ Payroll system for businesses that allows tracking of wages and automatic calcul
 ## 📚 Architectures & patterns
 I use this project to learn & implement various design patterns to ensure my work remains performant, maintainable and scalable.
 
-The project is set up to be split into multiple services, with each one representing a bounded context. The Wage service uses [Command Query Responsibility Segregation (CQRS)](https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs), with each model (i.e, Command/Query) being cleanly split using the layered architecture of [Controller Service Repository (CSR)](https://tom-collings.medium.com/controller-service-repository-16e29a4684e5).
+The project is set up to be split into multiple services, with each one representing a bounded context. The Wage service uses [Command Query Responsibility Segregation (CQRS)](https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs), with each model (i.e, Command/Query) being cleanly split using [Controller Service Repository (CSR)](https://tom-collings.medium.com/controller-service-repository-16e29a4684e5).
 
 The core backend code (`FinancePlanner.Wage.Queries.Application`) uses [Chain of Responsibility (CoR)](https://refactoring.guru/design-patterns/chain-of-responsibility), which divides logic into modular blocks that can be included or excluded as required throughout the codebase, allowing for easier testing.
 
